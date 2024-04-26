@@ -1,38 +1,43 @@
 ﻿using Infrastructure.ProjectStateMachine.Base;
-using Infrastructure.Services.DynamicData;
+using Infrastructure.Services.AssetsAddressables;
+using Infrastructure.Services.GameData;
+using Infrastructure.Services.GameData.Progress;
+using Infrastructure.Services.GameData.SaveLoad;
+using PlayerProgress = Data.GameData.PlayerProgress;
 
 namespace Infrastructure.ProjectStateMachine.States
 {
     public class InitializationState : IState<GameBootstrap>, IEnterable
     {
-        public GameBootstrap Initializer { get; }
-
-        public InitializationState(GameBootstrap initializer)
+        public InitializationState(GameBootstrap initializer, IProgressService progressService,
+            ISaveLoadService saveLoadService, IAssetsAddressablesProvider assetsAddressablesProvider)
         {
+            _progressService = progressService;
+            _saveLoadService = saveLoadService;
+            _assetsAddressablesProvider = assetsAddressablesProvider;
             Initializer = initializer;
         }
 
+        public GameBootstrap Initializer { get; }
+        private readonly IProgressService _progressService;
+        private readonly ISaveLoadService _saveLoadService;
+        private readonly IAssetsAddressablesProvider _assetsAddressablesProvider;
+
         public void OnEnter()
         {
+            LoadLocalGame();
+            InitializeGame();
             ChangeStateToLoading();
         }
 
         private void LoadLocalGame()
         {
-            //_progressService.SetProgress(_saveLoadService.LoadProgress() ?? InitializeProgress());
-
-            InitializeGame();
+            _progressService.SetProgress(_saveLoadService.LoadProgress() ?? InitializeProgress());
         }
 
         private void InitializeGame()
         {
-            //GetLanguageForGame();
-
-            //_assetsAddressablesProvider.Initialize();
-
-            //_uiFactory.Initialize(_windowService);
-
-            ChangeStateToLoading();
+            _assetsAddressablesProvider.Initialize();
         }
 
         private void ChangeStateToLoading()
@@ -40,20 +45,9 @@ namespace Infrastructure.ProjectStateMachine.States
             Initializer.StateMachine.SwitchState<ResourcesLoadingState>();
         }
 
-        private void CreateNewProgressGooglePlay()
-        {
-            var newProgress = InitializeProgress();
-
-            //_progressService.SetProgress(newProgress);
-
-            InitializeGame();
-        }
-
         private PlayerProgress InitializeProgress()
         {
-            var newProgress = new PlayerProgress();
-
-            return newProgress;
+            return new PlayerProgress();
         }
     }
 }

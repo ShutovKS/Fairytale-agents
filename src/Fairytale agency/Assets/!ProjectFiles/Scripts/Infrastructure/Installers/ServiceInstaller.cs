@@ -1,8 +1,9 @@
 ﻿using Infrastructure.Services.AssetsAddressables;
 using Infrastructure.Services.CoroutineRunner;
-using Infrastructure.Services.DynamicData.Progress;
-using Infrastructure.Services.DynamicData.SaveLoad;
+using Infrastructure.Services.Dialogue;
 using Infrastructure.Services.Factory.UIFactory;
+using Infrastructure.Services.GameData.Progress;
+using Infrastructure.Services.GameData.SaveLoad;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.SoundsService;
 using Infrastructure.Services.WindowsService;
@@ -25,6 +26,7 @@ namespace Infrastructure.Installers
             BindCoroutineRunnerService();
             BindSaveLoadService();
             BindSoundsService();
+            BindDialogueService();
         }
 
         private void BindSoundsService()
@@ -65,6 +67,11 @@ namespace Infrastructure.Installers
         private void BindCoroutineRunnerService()
         {
             Container.Bind<ICoroutineRunner>().FromInstance(this);
+        }
+
+        private void BindDialogueService()
+        {
+            Container.BindInterfacesTo<DialogueService>().AsSingle();
         }
     }
 }
