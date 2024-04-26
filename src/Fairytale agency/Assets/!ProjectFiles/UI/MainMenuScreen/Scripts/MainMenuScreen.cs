@@ -14,6 +14,11 @@ namespace UI.MainMenuScreen
         [SerializeField] private Button _startNewGameButton;
         [SerializeField] private Button _loadGameButton;
         [SerializeField] private Button _exitButton;
+
+        public void SetLoadGameButtonIsInteractable(bool isInteractable)
+        {
+            _loadGameButton.interactable = isInteractable;
+        }
         
         private new void Awake()
         {
