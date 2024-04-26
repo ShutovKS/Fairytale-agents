@@ -12,24 +12,24 @@ namespace Infrastructure.Services.Input
 
         public Vector2 MovementValue;
         public Vector2 LookValue;
-        public event Action Attack; 
-        public event Action Interact; 
-        public event Action Crouch; 
-        public event Action Jump; 
-        public event Action Previous; 
-        public event Action Next; 
-        public event Action<bool> Sprint; 
-        public event Action<Vector2> Navigate; 
-        public event Action Submit; 
-        public event Action Cancel; 
-        public event Action<Vector2> Point; 
-        public event Action Click; 
-        public event Action RightClick; 
-        public event Action MiddleClick; 
-        public event Action<Vector2> ScrollWheel; 
-        public event Action<Vector3> TrackedDevicePosition; 
-        public event Action<Vector3> TrackedDeviceOrientation; 
-        
+        public event Action Attack;
+        public event Action Interact;
+        public event Action Crouch;
+        public event Action Jump;
+        public event Action Previous;
+        public event Action Next;
+        public event Action<bool> Sprint;
+        public event Action<Vector2> Navigate;
+        public event Action Submit;
+        public event Action Cancel;
+        public event Action<Vector2> Point;
+        public event Action Click;
+        public event Action RightClick;
+        public event Action MiddleClick;
+        public event Action<Vector2> ScrollWheel;
+        public event Action<Vector3> TrackedDevicePosition;
+        public event Action<Vector3> TrackedDeviceOrientation;
+
 
         private void OnEnable()
         {
@@ -40,6 +40,7 @@ namespace Infrastructure.Services.Input
 
             _playerInputAction = new PlayerInputActions();
 
+            _playerInputAction.Player.SetCallbacks(this);
             _playerInputAction.UI.SetCallbacks(this);
             _playerInputAction.Enable();
         }

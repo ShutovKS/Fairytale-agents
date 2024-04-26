@@ -140,14 +140,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e359fd0541991a4281770d7e50a5d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  jumpSpeed: 8
-  gravity: 20
-  mouseSensitivity: 5
-  mouseSmoothing: 2
   health: 100
-  isFiring: 0
+  gravity: 20
+  speedMove: 3
+  speedRotate: 1
+  rotateSmoothing: 2
   controller: {fileID: 5903309617520370812}
+  inputActionReader: {fileID: 11400000, guid: 52afdfec6aa47be41aff2c2a3d7c9ded, type: 2}
 --- !u!143 &5903309617520370812
 CharacterController:
   m_ObjectHideFlags: 0
