@@ -15,18 +15,8 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: 4f0700f433f4c1a44b00094819b39693
   m_SerializeEntries:
-  - m_GUID: c7d6a10f77696054ea62fb97901a8f80
-    m_Address: MainMenuScene
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: abb2b9a232d990b419f826f454098235
-    m_Address: GameplayScene
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b96e6066dd2a6254d938144d9c60f859
-    m_Address: GameplayScreen
+    m_Address: Empty2DScene
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -37,6 +27,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 720d20257abf17347b4b35889c27ca88
     m_Address: MainMenuScreen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70e839069f534b94eab045d825a13569
+    m_Address: DialogueScreen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9c830b1e6d4692a40a075e6d5e1399e6
+    m_Address: ConfirmationScreen
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

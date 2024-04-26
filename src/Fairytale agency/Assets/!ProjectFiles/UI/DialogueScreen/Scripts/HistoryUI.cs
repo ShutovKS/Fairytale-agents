@@ -19,7 +19,7 @@ namespace UI.DialogueScreen
         [SerializeField] private Button _backButton;
         [SerializeField] private VerticalLayoutGroup _verticalLayoutGroup;
 
-        private readonly Dictionary<string, GameObject> _historyPhrases = new();
+        private readonly List<GameObject> _historyPhrases = new();
 
         public void Awake()
         {
@@ -31,16 +31,11 @@ namespace UI.DialogueScreen
             _historyGameObject.SetActive(value);
         }
 
-        public void CreateHistoryPhrase(string id, string name, string text)
+        public void CreateHistoryPhrase(string name, string text)
         {
-            if (_historyPhrases.ContainsKey(id))
-            {
-                return;
-            }
-
             var historyPhraseInstantiate = Instantiate(_historyPhrasePrefab, _contentTransform);
             historyPhraseInstantiate.SetActive(true);
-            _historyPhrases.Add(id, historyPhraseInstantiate);
+            _historyPhrases.Add(historyPhraseInstantiate);
 
             if (historyPhraseInstantiate.TryGetComponent(out HistoryPhraseUI historyPhraseUI))
             {
@@ -64,28 +59,10 @@ namespace UI.DialogueScreen
         {
             foreach (var historyPhrase in _historyPhrases)
             {
-                Destroy(historyPhrase.Value);
+                Destroy(historyPhrase);
             }
 
             _historyPhrases.Clear();
-        }
-
-        public void DestroyHistoryPhrase(string id)
-        {
-            if (_historyPhrases.TryGetValue(id, out var go))
-            {
-                Destroy(go);
-                _historyPhrases.Remove(id);
-            }
-            else
-            {
-                throw new Exception($"No id {id} in dictionary history phrases");
-            }
-        }
-
-        public IEnumerable<string> GetHistoryPhrasesId()
-        {
-            return _historyPhrases.Keys;
         }
     }
 }

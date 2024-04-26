@@ -28,20 +28,18 @@ namespace Infrastructure.Services.Factory.UIFactory
         {
             var screenPrefab = await _assetsAddressablesProvider.GetAsset<GameObject>(assetAddress);
             var screenObject = _container.InstantiatePrefab(screenPrefab);
-            
-            if (_screenTypeToInstanceMap.ContainsKey(windowId))
+
+            if (_screenTypeToInstanceMap.TryAdd(windowId, screenObject))
             {
-                Debug.LogWarning($"A screen with WindowID {windowId} already exists. Replacing the existing screen object.");
-                
-                Object.Destroy(_screenTypeToInstanceMap[windowId]);
-                
-                _screenTypeToInstanceMap[windowId] = screenObject;
+                return screenObject;
             }
-            else
-            {
-                _screenTypeToInstanceMap.Add(windowId, screenObject);
-            }
-    
+
+            Debug.LogWarning($"A screen with WindowID {windowId} already exists. Replacing the existing screen object.");
+                
+            Object.Destroy(_screenTypeToInstanceMap[windowId]);
+                
+            _screenTypeToInstanceMap[windowId] = screenObject;
+
             return screenObject;
         }
     
@@ -67,9 +65,8 @@ namespace Infrastructure.Services.Factory.UIFactory
     
         public void DestroyScreen(WindowID windowId)
         {
-            if (_screenTypeToInstanceMap.TryGetValue(windowId, out var screenObject))
+            if (_screenTypeToInstanceMap.Remove(windowId, out var screenObject))
             {
-                _screenTypeToInstanceMap.Remove(windowId);
                 Object.Destroy(screenObject);
             }
             else

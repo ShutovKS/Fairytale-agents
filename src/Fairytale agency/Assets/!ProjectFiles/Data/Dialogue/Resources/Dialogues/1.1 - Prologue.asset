@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c644533a0b941c69a78697ee0de086a, type: 3}
+  m_Name: 1.1 - Prologue
+  m_EditorClassIdentifier: 
+  <DialogueID>k__BackingField: 11
+  <Phrases>k__BackingField:
+  - <CharacterType>k__BackingField: 1
+    <TextLocalization>k__BackingField:
+    - <Language>k__BackingField: 1
+      <Text>k__BackingField: "\u0422\u0435\u043A\u0441\u0442 1"
+    <Background>k__BackingField: {fileID: -2041187975, guid: 0d7a26fe0c0ee154cb9af14d077bf115, type: 3}
+    <Event>k__BackingField: 0
+  - <CharacterType>k__BackingField: 1
+    <TextLocalization>k__BackingField:
+    - <Language>k__BackingField: 1
+      <Text>k__BackingField: "\u0422\u0435\u043A\u0441\u0442 2"
+    <Background>k__BackingField: {fileID: 0}
+    <Event>k__BackingField: 0
+  - <CharacterType>k__BackingField: 1
+    <TextLocalization>k__BackingField:
+    - <Language>k__BackingField: 1
+      <Text>k__BackingField: "\u0422\u0435\u043A\u0441\u0442 3"
+    <Background>k__BackingField: {fileID: 8559967888716000545, guid: 0d7a26fe0c0ee154cb9af14d077bf115, type: 3}
+    <Event>k__BackingField: 0
