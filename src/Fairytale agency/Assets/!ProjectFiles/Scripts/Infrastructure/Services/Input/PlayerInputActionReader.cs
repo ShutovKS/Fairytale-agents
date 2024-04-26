@@ -1,9 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
-namespace Services.Input
+namespace Infrastructure.Services.Input
 {
     [CreateAssetMenu(fileName = "PlayerInputActionReader", menuName = "Input/PlayerInputActionReader", order = 0)]
     public class PlayerInputActionReader : ScriptableObject, PlayerInputActions.IPlayerActions,

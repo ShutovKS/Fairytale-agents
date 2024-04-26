@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace Installers
+namespace Infrastructure.Installers
 {
     public class SettingsInstaller : MonoInstaller
     {

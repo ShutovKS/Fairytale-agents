@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using Services.WindowsService;
+using Infrastructure.Services.WindowsService;
 using UnityEngine;
 
-namespace Services.Factory.UIFactory
+namespace Infrastructure.Services.Factory.UIFactory
 {
     public interface IUIFactory
     {

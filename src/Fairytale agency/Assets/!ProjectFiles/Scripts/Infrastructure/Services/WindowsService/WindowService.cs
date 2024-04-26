@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Services.AssetsAddressables;
-using Services.Factory.UIFactory;
+using Infrastructure.Services.AssetsAddressables;
+using Infrastructure.Services.Factory.UIFactory;
 using UnityEngine;
 
-namespace Services.WindowsService
+namespace Infrastructure.Services.WindowsService
 {
     public class WindowService : IWindowService
     {

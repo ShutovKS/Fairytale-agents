@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Services.DynamicData
+namespace Infrastructure.Services.DynamicData
 {
     [Serializable]
     public class PlayerProgress

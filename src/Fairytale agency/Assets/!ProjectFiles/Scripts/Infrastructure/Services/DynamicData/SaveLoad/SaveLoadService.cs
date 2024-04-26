@@ -2,11 +2,11 @@
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using Infrastructure.Services.DynamicData.Progress;
 using Other;
-using Services.DynamicData.Progress;
 using UnityEngine;
 
-namespace Services.DynamicData.SaveLoad
+namespace Infrastructure.Services.DynamicData.SaveLoad
 {
     public class SaveLoadService : ISaveLoadService
     {

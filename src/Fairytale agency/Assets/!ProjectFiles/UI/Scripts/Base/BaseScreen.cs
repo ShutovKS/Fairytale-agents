@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Services.SoundsService;
-using Services.WindowsService;
+using Infrastructure.Services.SoundsService;
+using Infrastructure.Services.WindowsService;
 using UnityEngine;
 
 namespace UI.Scripts.Base

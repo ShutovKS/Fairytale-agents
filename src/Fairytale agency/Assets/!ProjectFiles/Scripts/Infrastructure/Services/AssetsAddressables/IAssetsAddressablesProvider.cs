@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Services.AssetsAddressables
+namespace Infrastructure.Services.AssetsAddressables
 {
     public interface IAssetsAddressablesProvider
     {

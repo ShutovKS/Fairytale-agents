@@ -1,4 +1,4 @@
-namespace ProjectStateMachine.Base
+namespace Infrastructure.ProjectStateMachine.Base
 {
     public interface IEnterableWithOneArg<in T0>
     {

@@ -1,4 +1,4 @@
-namespace Services.DynamicData.SaveLoad
+namespace Infrastructure.Services.DynamicData.SaveLoad
 {
     public interface ISaveLoadService
     {

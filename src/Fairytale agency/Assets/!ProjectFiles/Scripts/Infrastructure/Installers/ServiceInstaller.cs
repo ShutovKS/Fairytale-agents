@@ -1,15 +1,15 @@
-﻿using Services.AssetsAddressables;
-using Services.CoroutineRunner;
-using Services.DynamicData.Progress;
-using Services.DynamicData.SaveLoad;
-using Services.Factory.UIFactory;
-using Services.Input;
-using Services.SoundsService;
-using Services.WindowsService;
+﻿using Infrastructure.Services.AssetsAddressables;
+using Infrastructure.Services.CoroutineRunner;
+using Infrastructure.Services.DynamicData.Progress;
+using Infrastructure.Services.DynamicData.SaveLoad;
+using Infrastructure.Services.Factory.UIFactory;
+using Infrastructure.Services.Input;
+using Infrastructure.Services.SoundsService;
+using Infrastructure.Services.WindowsService;
 using UnityEngine;
 using Zenject;
 
-namespace Installers
+namespace Infrastructure.Installers
 {
     public class ServiceInstaller : MonoInstaller, ICoroutineRunner
     {

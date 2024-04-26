@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Services.WindowsService
+namespace Infrastructure.Services.WindowsService
 {
     [Serializable]
     public class StateWindowButton

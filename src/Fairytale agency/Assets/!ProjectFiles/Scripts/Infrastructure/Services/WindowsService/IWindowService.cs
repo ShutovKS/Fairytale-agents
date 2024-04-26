@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Services.WindowsService
+namespace Infrastructure.Services.WindowsService
 {
     public interface IWindowService
     {

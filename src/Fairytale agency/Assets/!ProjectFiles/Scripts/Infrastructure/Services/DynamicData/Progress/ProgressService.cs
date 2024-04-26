@@ -1,4 +1,4 @@
-﻿namespace Services.DynamicData.Progress
+﻿namespace Infrastructure.Services.DynamicData.Progress
 {
     public class ProgressService : IProgressService
     {
