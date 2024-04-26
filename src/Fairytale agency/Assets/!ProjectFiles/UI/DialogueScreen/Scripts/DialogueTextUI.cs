@@ -1,0 +1,25 @@
+﻿#region
+
+using TMPro;
+using UnityEngine;
+
+#endregion
+
+namespace UI.DialogueScreen
+{
+    public class DialogueTextUI : MonoBehaviour
+    {
+        [SerializeField] private TextMeshProUGUI _authorNameText;
+        [SerializeField] private TextMeshProUGUI _textText;
+
+        public void SetAuthorName(string authorName)
+        {
+            _authorNameText.text = authorName;
+        }
+
+        public void SetText(string text)
+        {
+            _textText.text = text;
+        }
+    }
+}
