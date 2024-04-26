@@ -6,6 +6,7 @@ using Infrastructure.Services.GameData.Progress;
 using Infrastructure.Services.GameData.SaveLoad;
 using Infrastructure.Services.WindowsService;
 using UI.MainMenuScreen;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using PlayerProgress = Data.GameData.PlayerProgress;
@@ -64,7 +65,11 @@ namespace Infrastructure.ProjectStateMachine.States
 
         private static void OnExitButtonClicked()
         {
+#if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+#else
             Application.Quit();
+#endif
         }
 
         private void CloseLoadingWindow()

@@ -40,13 +40,11 @@ namespace Infrastructure.ProjectStateMachine.States
         private const float SECONDS_DELAY_DEFAULT = 0.05f;
         private const float SECONDS_DELAY_FAST = 0.005f;
 
-        private int DialogueCount => _dialogues.Phrases.Length;
-
         private Coroutine _displayTypingCoroutine;
         private DialogueUI _dialogueUI;
         private Dialogue _dialogues;
 
-        private Phrase _currentDialogue;
+        private Phrase CurrentDialogue => _dialogues.Phrases[_currentDialogueId];
         private int _currentDialogueId;
 
         private UnityAction _onDialogueCompleted;
@@ -57,34 +55,45 @@ namespace Infrastructure.ProjectStateMachine.States
         private bool _isSpeedUpMode;
         private bool _isAutoMode;
 
-        public void OnEnter()
+        public async void OnEnter()
+        {
+            await LoadSceneAsync();
+            _dialogues = _dialogueService.GetDialogues(DialogueID.Prologue);
+            await OpenWindow();
+            StartDialogue();
+        }
+
+        private async Task LoadSceneAsync()
         {
             var asyncOperation = Addressables.LoadSceneAsync(AssetsAddressableConstants.EMPTY_2D_SCENE);
-            asyncOperation.Completed += async _ =>
-            {
-                await OpenWindow();
-                StartDialogue();
-            };
-
-            _dialogues = _dialogueService.GetDialogues(DialogueID.Prologue);
+            await asyncOperation.Task;
         }
 
         private async Task OpenWindow()
         {
             _dialogueUI = await _windowService.OpenAndGetComponent<DialogueUI>(WindowID.Dialogue);
+            ConfigureDialogueUIButtons();
+            _windowService.Close(WindowID.Loading);
+        }
+
+        private void ConfigureDialogueUIButtons()
+        {
             _dialogueUI.Buttons.OnBackButtonClicked = ConfirmExitInMenu;
             _dialogueUI.Buttons.OnHistoryButtonClicked = OpenDialogHistory;
             _dialogueUI.Buttons.OnSpeedUpButtonClicked = ChangeTypingDialogSpeedUp;
             _dialogueUI.Buttons.OnAutoButtonClicked = AutoDialogSwitchMode;
             _dialogueUI.Buttons.OnFurtherButtonClicked = DialogFurther;
-
-            CloseLoadingWindow();
         }
 
         private async void ConfirmExitInMenu()
         {
             StopAutoDialogSwitchMode();
             var confirmationUI = await _windowService.OpenAndGetComponent<ConfirmationUI>(WindowID.Confirmation);
+            ConfigureConfirmationUIButtons(confirmationUI);
+        }
+
+        private void ConfigureConfirmationUIButtons(ConfirmationUI confirmationUI)
+        {
             confirmationUI.Buttons.OnYesButtonClicked = () =>
             {
                 _windowService.Close(WindowID.Confirmation);
@@ -93,15 +102,9 @@ namespace Infrastructure.ProjectStateMachine.States
             confirmationUI.Buttons.OnNoButtonClicked = () => _windowService.Close(WindowID.Confirmation);
         }
 
-        private void CloseLoadingWindow()
-        {
-            _windowService.Close(WindowID.Loading);
-        }
-
         public void OnExit()
         {
             ResetData();
-
             _windowService.Close(WindowID.Dialogue);
         }
 
@@ -117,9 +120,7 @@ namespace Infrastructure.ProjectStateMachine.States
 
         private void StartDialogue()
         {
-            _typingDelay = SECONDS_DELAY_DEFAULT;
             _dialogueUI.SetActivePanel(true);
-
             SetDialog(0);
         }
 
@@ -131,25 +132,22 @@ namespace Infrastructure.ProjectStateMachine.States
             }
             else
             {
-                _isDialogCompleted = true;
-                _coroutineRunner.StopCoroutine(_displayTypingCoroutine);
-                _dialogueUI.DialogueText.SetText(_currentDialogue.TextLocalization[0].Text);
-                _onDialogueCompleted?.Invoke();
+                CompleteDialogue();
             }
+        }
+
+        private void CompleteDialogue()
+        {
+            _isDialogCompleted = true;
+            _coroutineRunner.StopCoroutine(_displayTypingCoroutine);
+            _dialogueUI.DialogueText.SetText(CurrentDialogue.TextLocalization[0].Text);
+            _onDialogueCompleted?.Invoke();
         }
 
         private void ChangeTypingDialogSpeedUp()
         {
-            if (_isSpeedUpMode)
-            {
-                _isSpeedUpMode = false;
-                _typingDelay = SECONDS_DELAY_DEFAULT;
-            }
-            else
-            {
-                _isSpeedUpMode = true;
-                _typingDelay = SECONDS_DELAY_FAST;
-            }
+            _isSpeedUpMode = !_isSpeedUpMode;
+            _typingDelay = _isSpeedUpMode ? SECONDS_DELAY_FAST : SECONDS_DELAY_DEFAULT;
         }
 
         private void AutoDialogSwitchMode()
@@ -180,16 +178,14 @@ namespace Infrastructure.ProjectStateMachine.States
 
         private void SetDialog(int id)
         {
-            if (DialogueCount <= id)
+            if (id >= _dialogues.Phrases.Length)
             {
                 DialogueEnded();
                 return;
             }
 
-            _currentDialogue = _dialogues.Phrases[id];
             _currentDialogueId = id;
-            _isDialogCompleted = false;
-            SetPhraseTyping(_currentDialogue);
+            SetPhraseTyping(CurrentDialogue);
         }
 
         private void AutoDialogSwitchIfComplete()
@@ -242,10 +238,6 @@ namespace Infrastructure.ProjectStateMachine.States
         {
         }
 
-        private void DialogueEnded()
-        {
-        }
-
         private void AddDialogueInHistory(string name, string text)
         {
             _dialogueUI.History.CreateHistoryPhrase(name, text);
@@ -254,6 +246,10 @@ namespace Infrastructure.ProjectStateMachine.States
         private void OpenMenu()
         {
             Initializer.StateMachine.SwitchState<GameMainMenuState>();
+        }
+
+        private void DialogueEnded()
+        {
         }
     }
 }
