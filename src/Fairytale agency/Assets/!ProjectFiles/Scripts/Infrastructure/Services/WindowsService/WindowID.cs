@@ -6,6 +6,7 @@
         Unknown = 0,
         Loading = 1,
         MainMenu = 2,
-        Gameplay = 3
+        Dialogue = 3,
+        Confirmation = 4,
     }
 }

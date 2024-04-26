@@ -5,6 +5,7 @@ namespace Infrastructure.Services.CoroutineRunner
 {
     public interface ICoroutineRunner
     {
-        public Coroutine StartCoroutine(IEnumerator coroutine);
+        Coroutine StartCoroutine(IEnumerator coroutine);
+        void StopCoroutine(Coroutine coroutine);
     }
 }

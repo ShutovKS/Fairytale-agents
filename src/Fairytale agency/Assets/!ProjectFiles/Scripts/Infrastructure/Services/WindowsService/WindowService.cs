@@ -23,7 +23,7 @@ namespace Infrastructure.Services.WindowsService
         public async Task<T> OpenAndGetComponent<T>(WindowID windowID) where T : Component
         {
             await OpenWindow(windowID);
-            
+
             var component = _uiFactory.GetScreenComponent<T>(windowID).Result;
 
             return component;
@@ -44,11 +44,15 @@ namespace Infrastructure.Services.WindowsService
                 case WindowID.MainMenu:
                     await _uiFactory.CreateScreen(AssetsAddressableConstants.MAIN_MENU_SCREEN, WindowID.MainMenu);
                     break;
-                case WindowID.Gameplay:
-                    await _uiFactory.CreateScreen(AssetsAddressableConstants.GAMEPLAY_SCREEN, WindowID.Gameplay);
+                case WindowID.Dialogue:
+                    await _uiFactory.CreateScreen(AssetsAddressableConstants.DIALOGUE_SCREEN, WindowID.Dialogue);
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(windowID), windowID, null);
+                case WindowID.Confirmation:
+                    await _uiFactory.CreateScreen(AssetsAddressableConstants.CONFIRMATION_SCREEN,
+                        WindowID.Confirmation);
+                    break;
+
+                default: throw new ArgumentOutOfRangeException(nameof(windowID), windowID, null);
             }
         }
 
@@ -68,8 +72,11 @@ namespace Infrastructure.Services.WindowsService
                 case WindowID.MainMenu:
                     _uiFactory.DestroyScreen(WindowID.MainMenu);
                     break;
-                case WindowID.Gameplay:
-                    _uiFactory.DestroyScreen(WindowID.Gameplay);
+                case WindowID.Dialogue:
+                    _uiFactory.DestroyScreen(WindowID.Dialogue);
+                    break;
+                case WindowID.Confirmation:
+                    _uiFactory.DestroyScreen(WindowID.Confirmation);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(windowID), windowID, null);
