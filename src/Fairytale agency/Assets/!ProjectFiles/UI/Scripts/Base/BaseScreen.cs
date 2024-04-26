@@ -4,7 +4,7 @@ using Infrastructure.Services.SoundsService;
 using Infrastructure.Services.WindowsService;
 using UnityEngine;
 
-namespace UI.Scripts.Base
+namespace UI.Base
 {
     public class BaseScreen : MonoBehaviour
     {

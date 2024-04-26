@@ -3,77 +3,83 @@ using System.Text;
 using Infrastructure.Services.DynamicData;
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
-namespace Other
+public static class Extensions
 {
-    public static class Extensions
+    public static T ToDeserialized<T>(this string json) => JsonConvert.DeserializeObject<T>(json);
+
+    public static string ToJson(this object obj) => JsonConvert.SerializeObject(obj);
+
+    public static int RoundToNearest(this int number, int divisor)
     {
-        public static T ToDeserialized<T>(this string json) => JsonConvert.DeserializeObject<T>(json);
-
-        public static string ToJson(this object obj) => JsonConvert.SerializeObject(obj);
-        public static int RoundToNearest(this int number, int divisor)
+        if (divisor == 0)
         {
-            if (divisor == 0)
-            {
-                Debug.LogError("Divisor cannot be zero.");
-                return number;
-            }
-
-            var result = Mathf.RoundToInt((float)number / divisor) * divisor;
-            return result;
+            Debug.LogError("Divisor cannot be zero.");
+            return number;
         }
 
-        public static byte[] ToByteArray(this PlayerProgress playerProgress)
-        {
-            var playerProgressJson = JsonConvert.SerializeObject(playerProgress);
-            
-            var playerData = Encoding.UTF8.GetBytes(playerProgressJson);
-            
-            return playerData;
-        }
-        
-        public static bool TryParseByteArrayToPlayerProgress(this byte[] arrBytes)
-        {
-            if (arrBytes == null || arrBytes.Length == 0)
-            {
-                Debug.LogError("Byte array is null or empty.");
-                return false;
-            }
+        var result = Mathf.RoundToInt((float)number / divisor) * divisor;
+        return result;
+    }
 
-            try
-            {
-                var playerProgressJson = Encoding.UTF8.GetString(arrBytes);
-                var deserializedObject = JsonConvert.DeserializeObject<PlayerProgress>(playerProgressJson);
+    public static byte[] ToByteArray(this PlayerProgress playerProgress)
+    {
+        var playerProgressJson = JsonConvert.SerializeObject(playerProgress);
 
-                return deserializedObject != null;
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError("Failed to deserialize PlayerProgress: " + ex.Message);
-                return false;
-            }
+        var playerData = Encoding.UTF8.GetBytes(playerProgressJson);
+
+        return playerData;
+    }
+
+    public static bool TryParseByteArrayToPlayerProgress(this byte[] arrBytes)
+    {
+        if (arrBytes == null || arrBytes.Length == 0)
+        {
+            Debug.LogError("Byte array is null or empty.");
+            return false;
         }
 
-        
-        public static PlayerProgress ByteArrayToPlayerProgress(this byte[] arrBytes)
+        try
         {
-            if (arrBytes == null || arrBytes.Length == 0)
-            {
-                Debug.LogError("Byte array is null or empty.");
-                return null;
-            }
+            var playerProgressJson = Encoding.UTF8.GetString(arrBytes);
+            var deserializedObject = JsonConvert.DeserializeObject<PlayerProgress>(playerProgressJson);
 
-            try
-            {
-                var playerProgressJson = Encoding.UTF8.GetString(arrBytes);
-                
-                return JsonConvert.DeserializeObject<PlayerProgress>(playerProgressJson);
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError("Failed to deserialize PlayerProgress: " + ex.Message);
-                return null;
-            }
+            return deserializedObject != null;
         }
+        catch (Exception ex)
+        {
+            Debug.LogError("Failed to deserialize PlayerProgress: " + ex.Message);
+            return false;
+        }
+    }
+
+
+    public static PlayerProgress ByteArrayToPlayerProgress(this byte[] arrBytes)
+    {
+        if (arrBytes == null || arrBytes.Length == 0)
+        {
+            Debug.LogError("Byte array is null or empty.");
+            return null;
+        }
+
+        try
+        {
+            var playerProgressJson = Encoding.UTF8.GetString(arrBytes);
+
+            return JsonConvert.DeserializeObject<PlayerProgress>(playerProgressJson);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Failed to deserialize PlayerProgress: " + ex.Message);
+            return null;
+        }
+    }
+
+    public static void RegisterNewCallback(this Button button, Action action)
+    {
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(() => action?.Invoke());
     }
 }

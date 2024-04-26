@@ -5,7 +5,7 @@ using UnityEngine.AddressableAssets;
 
 namespace Infrastructure.ProjectStateMachine.States
 {
-    public class GameplayState : IState<GameBootstrap>, IEnterableWithOneArg<bool>, IExitable
+    public class GameplayState : IState<GameBootstrap>, IEnterable, IExitable
     {
         public GameBootstrap Initializer { get; }
         private readonly IWindowService _windowService;
@@ -20,7 +20,7 @@ namespace Infrastructure.ProjectStateMachine.States
             _assetsAddressablesProvider = assetsAddressablesProvider;
         }
 
-        public void OnEnter(bool isTest)
+        public void OnEnter()
         {
             var sceneForLoad = AssetsAddressableConstants.GAMEPLAY_SCENE;
 

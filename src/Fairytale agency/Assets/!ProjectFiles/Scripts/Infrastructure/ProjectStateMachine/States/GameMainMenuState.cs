@@ -1,7 +1,8 @@
 ﻿using Infrastructure.ProjectStateMachine.Base;
 using Infrastructure.Services.AssetsAddressables;
 using Infrastructure.Services.WindowsService;
-using UI.MainMenuScreen.Scripts;
+using UI.MainMenuScreen;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace Infrastructure.ProjectStateMachine.States
@@ -29,20 +30,20 @@ namespace Infrastructure.ProjectStateMachine.States
         {
             var mainMenuScreen = await _windowService.OpenAndGetComponent<MainMenuScreen>(WindowID.MainMenu);
 
-            mainMenuScreen.OnStartGameButtonClicked += OnStartGameButtonClicked;
-            mainMenuScreen.OnTestButtonClicked += OnTestButtonClicked;
+            mainMenuScreen.OnStartNewGameButtonClicked += OnStartNewGameButtonClicked;
+            mainMenuScreen.OnExitButtonClicked += OnExitButtonClicked;
 
             CloseLoadingWindow();
         }
 
-        private void OnTestButtonClicked()
+        private void OnExitButtonClicked()
         {
-            Initializer.StateMachine.SwitchState<GameplayState, bool>(true);
+            Application.Quit();
         }
 
-        private void OnStartGameButtonClicked()
+        private void OnStartNewGameButtonClicked()
         {
-            Initializer.StateMachine.SwitchState<GameplayState, bool>(false);
+            Initializer.StateMachine.SwitchState<GameplayState>();
         }
 
         private void CloseLoadingWindow()
