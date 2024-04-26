@@ -20,13 +20,14 @@ namespace EvilSpirits
         private void Start()
         {
             rigidbody.AddForce(rigidbody.transform.forward * projectileSpeed);
+            Destroy(gameObject, 10);
         }
 
         private void OnCollisionEnter(Collision col)
         {
             if (col.gameObject.CompareTag($"Enemy"))
             {
-                col.gameObject.GetComponent<ImpController>().TakeDamage(projectileDamage);
+                col.gameObject.GetComponent<EnemyController>().TakeDamage(projectileDamage);
                 Debug.Log("Hit");
                 Destroy(gameObject);
             }

@@ -1,9 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace EvilSpirits
 {
-    public class ImpController : MonoBehaviour
+    public class EnemyController : MonoBehaviour
     {
         [SerializeField] private Animator animator;
         [SerializeField] private CharacterController controller;
@@ -38,6 +37,10 @@ namespace EvilSpirits
                 animator.SetBool(isDead, true);
                 GetComponent<CapsuleCollider>().enabled = false;
                 controller.enabled = false;
+                transform.position = new Vector3(transform.position.x, 0.075f, transform.position.z);
+                transform.Rotate(-90, 0, 0);
+                GetComponent<Collider>().enabled = false;
+                enabled = false;
             }
         }
 
@@ -52,10 +55,6 @@ namespace EvilSpirits
                 return;
             }
 
-            //transform.LookAt(transform.position + playerPosition.transform.rotation * Vector3.forward, 
-            //                 playerPosition.transform.rotation * Vector3.up);
-
-            //If the player has been spotted begin pursuit
             if (_angleToPlayer is >= -90 and <= 90 && !_hasSpottedPlayer)
             {
                 animator.SetBool(isPursuing, true);
@@ -64,7 +63,6 @@ namespace EvilSpirits
 
             if (_hasSpottedPlayer)
             {
-                //If the player is less than a certain distance, stop pursuit.
                 if (Vector3.Distance(transform.position, _playerTransform.position) <= 1f)
                 {
                     animator.SetBool(isPursuing, false);
@@ -76,7 +74,6 @@ namespace EvilSpirits
                     if (!animator.GetBool(isAttacking))
                     {
                         controller.Move(transform.forward * 1.0f * Time.deltaTime);
-                        //transform.position += transform.forward * 1.0f * Time.deltaTime;
                     }
                 }
 
@@ -85,8 +82,6 @@ namespace EvilSpirits
                 {
                     animator.SetBool(isPursuing, false);
                     animator.SetBool(isAttacking, true);
-
-                    //StartCoroutine(WaitOnAttack());
                 }
                 else
                 {
