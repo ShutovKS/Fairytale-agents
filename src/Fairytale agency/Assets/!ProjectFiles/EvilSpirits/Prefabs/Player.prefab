@@ -147,6 +147,7 @@ MonoBehaviour:
   rotateSmoothing: 2
   controller: {fileID: 5903309617520370812}
   inputActionReader: {fileID: 11400000, guid: 52afdfec6aa47be41aff2c2a3d7c9ded, type: 2}
+  fireGun: {fileID: 6029242124651551755}
 --- !u!143 &5903309617520370812
 CharacterController:
   m_ObjectHideFlags: 0
@@ -321,3 +322,4 @@ MonoBehaviour:
   animator: {fileID: 5466854417384170195}
   gun1ProjectilePrefab: {fileID: 1092200083595704, guid: 43ecf59a0c0918949aae9374138f36ae, type: 3}
   projectileSpawn: {fileID: 4745115888554690806}
+  delayBetweenShots: 1

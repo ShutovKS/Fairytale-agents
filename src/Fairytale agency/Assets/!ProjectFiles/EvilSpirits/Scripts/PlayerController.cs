@@ -1,4 +1,5 @@
-﻿using Infrastructure.Services.Input;
+﻿using System;
+using Infrastructure.Services.Input;
 using UnityEngine;
 
 namespace EvilSpirits
@@ -13,6 +14,7 @@ namespace EvilSpirits
 
         [SerializeField] private CharacterController controller;
         [SerializeField] private PlayerInputActionReader inputActionReader;
+        [SerializeField] private FireGun fireGun;
 
         private Vector2 _mouseLook;
         private Vector2 _smoothV;
@@ -51,6 +53,16 @@ namespace EvilSpirits
             _mouseLook += _smoothV;
 
             controller.transform.localRotation = Quaternion.AngleAxis(_mouseLook.x, controller.transform.up);
+        }
+
+        private void OnEnable()
+        {
+            inputActionReader.Attack += fireGun.Shot;
+        }
+
+        private void OnDisable()
+        {
+            inputActionReader.Attack -= fireGun.Shot;
         }
     }
 }

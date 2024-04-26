@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace EvilSpirits
@@ -8,29 +9,30 @@ namespace EvilSpirits
         [SerializeField] private Animator animator;
         [SerializeField] private GameObject gun1ProjectilePrefab;
         [SerializeField] private Transform projectileSpawn;
+        [SerializeField] private float delayBetweenShots = 1f;
 
-        private bool _hasFired;
-        private float _timer;
+        private bool _isYouCanShoot;
         private static readonly int isFiring = Animator.StringToHash("isFiring");
-        
-        private void Update()
-        {
-            if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
-            {
-                if (_timer >= 1.0f || !_hasFired)
-                {
-                    animator.SetBool(isFiring, true);
-                    Instantiate(gun1ProjectilePrefab, projectileSpawn.position, projectileSpawn.rotation);
-                    _hasFired = true;
-                    _timer = 0;
-                }
-                else
-                {
-                    animator.SetBool(isFiring, false);
-                }
-            }
 
-            _timer += Time.deltaTime;
+        public void Shot()
+        {
+            if (_isYouCanShoot)
+            {
+                _isYouCanShoot = false;
+                animator.SetBool(isFiring, true);
+                Instantiate(gun1ProjectilePrefab, projectileSpawn.position, projectileSpawn.rotation);
+                StartCoroutine(Timer());
+            }
+            else
+            {
+                animator.SetBool(isFiring, false);
+            }
+        }
+
+        private IEnumerator Timer()
+        {
+            yield return new WaitForSeconds(delayBetweenShots);
+            _isYouCanShoot = true;
         }
     }
 }
