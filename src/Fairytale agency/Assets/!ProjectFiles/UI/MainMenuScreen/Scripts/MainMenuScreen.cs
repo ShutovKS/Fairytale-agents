@@ -1,30 +1,36 @@
 using System;
-using UI.Scripts.Base;
+using UI.Base;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.MainMenuScreen.Scripts
+namespace UI.MainMenuScreen
 {
     public class MainMenuScreen : BaseScreen
     {
-        public event Action OnStartGameButtonClicked;
-        public event Action OnTestButtonClicked;
+        public event Action OnStartNewGameButtonClicked;
+        public event Action OnLoadGameButtonClicked;
+        public event Action OnExitButtonClicked;
         
-        [SerializeField] private Button _startGameButton;
-        [SerializeField] private Button _testButton;
+        [SerializeField] private Button _startNewGameButton;
+        [SerializeField] private Button _loadGameButton;
+        [SerializeField] private Button _exitButton;
         
         private new void Awake()
         {
-            _startGameButton.onClick.AddListener(() => OnStartGameButtonClicked?.Invoke());
-            _testButton.onClick.AddListener(() => OnTestButtonClicked?.Invoke());
+            _startNewGameButton.onClick.AddListener(() => OnStartNewGameButtonClicked?.Invoke());
+            _loadGameButton.onClick.AddListener(() => OnLoadGameButtonClicked?.Invoke());
+            _exitButton.onClick.AddListener(() => OnExitButtonClicked?.Invoke());
             
             base.Awake();
         }
         
-        private void OnDisable()
+        private new void OnDestroy()
         {
-            _startGameButton.onClick.RemoveListener(() => OnStartGameButtonClicked?.Invoke());
-            _testButton.onClick.RemoveListener(() => OnTestButtonClicked?.Invoke());
+            _startNewGameButton.onClick.RemoveListener(() => OnStartNewGameButtonClicked?.Invoke());
+            _loadGameButton.onClick.RemoveListener(() => OnLoadGameButtonClicked?.Invoke());
+            _exitButton.onClick.RemoveListener(() => OnExitButtonClicked?.Invoke());
+            
+            base.OnDestroy();
         }
     }
 }

@@ -1,6 +1,3 @@
 using UnityEngine;
 
-namespace Other
-{
-    public class BaseConfig : ScriptableObject { }
-}
+public class BaseConfig : ScriptableObject { }
