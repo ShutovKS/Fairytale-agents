@@ -40,6 +40,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4fb8ae7e9042894c88d74c27e3c5a62
+    m_Address: EvilSpirits
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6533f70fdb639304dab390272ff464ec
+    m_Address: Empty2D
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 904b04ece720d344d84ce9e6c8975039, type: 2}
   m_SchemaSet:

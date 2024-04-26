@@ -1,0 +1,323 @@
+fileFormatVersion: 2
+guid: 4719ecf4f399de649b5d3fb8975c0478
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3132271743635331093
+    second: beretta_96d_sprite_set_by_d00m3d_d00d_0
+  - first:
+      213: -4213719302961841714
+    second: beretta_96d_sprite_set_by_d00m3d_d00d_1
+  - first:
+      213: 3202670364743019598
+    second: beretta_96d_sprite_set_by_d00m3d_d00d_2
+  - first:
+      213: 5680082920940358290
+    second: beretta_96d_sprite_set_by_d00m3d_d00d_3
+  - first:
+      213: 3438319907641446844
+    second: beretta_96d_sprite_set_by_d00m3d_d00d_4
+  - first:
+      213: 1713551263450619492
+    second: beretta_96d_sprite_set_by_d00m3d_d00d_5
+  - first:
+      213: 4571069593750576553
+    second: beretta_96d_sprite_set_by_d00m3d_d00d_6
+  - first:
+      213: 4957042140348823591
+    second: beretta_96d_sprite_set_by_d00m3d_d00d_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: beretta_96d_sprite_set_by_d00m3d_d00d_0
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 569
+        width: 173
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 518906b2e80187b20800000000000000
+      internalID: 3132271743635331093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beretta_96d_sprite_set_by_d00m3d_d00d_1
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 560
+        width: 239
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec9b0c38e9cd585c0800000000000000
+      internalID: -4213719302961841714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beretta_96d_sprite_set_by_d00m3d_d00d_2
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 554
+        width: 236
+        height: 293
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4cad2f6abb227c20800000000000000
+      internalID: 3202670364743019598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beretta_96d_sprite_set_by_d00m3d_d00d_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 167
+        width: 236
+        height: 293
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29ac96d7255b3de40800000000000000
+      internalID: 5680082920940358290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beretta_96d_sprite_set_by_d00m3d_d00d_4
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 158
+        width: 239
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb15f1f2dbd57bf20800000000000000
+      internalID: 3438319907641446844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beretta_96d_sprite_set_by_d00m3d_d00d_5
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 155
+        width: 239
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46e556a9bc1c7c710800000000000000
+      internalID: 1713551263450619492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beretta_96d_sprite_set_by_d00m3d_d00d_6
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 23
+        width: 77
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ad9713b393bf6f30800000000000000
+      internalID: 4571069593750576553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beretta_96d_sprite_set_by_d00m3d_d00d_7
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 23
+        width: 74
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72832282093fac440800000000000000
+      internalID: 4957042140348823591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      beretta_96d_sprite_set_by_d00m3d_d00d_0: 3132271743635331093
+      beretta_96d_sprite_set_by_d00m3d_d00d_1: -4213719302961841714
+      beretta_96d_sprite_set_by_d00m3d_d00d_2: 3202670364743019598
+      beretta_96d_sprite_set_by_d00m3d_d00d_3: 5680082920940358290
+      beretta_96d_sprite_set_by_d00m3d_d00d_4: 3438319907641446844
+      beretta_96d_sprite_set_by_d00m3d_d00d_5: 1713551263450619492
+      beretta_96d_sprite_set_by_d00m3d_d00d_6: 4571069593750576553
+      beretta_96d_sprite_set_by_d00m3d_d00d_7: 4957042140348823591
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
