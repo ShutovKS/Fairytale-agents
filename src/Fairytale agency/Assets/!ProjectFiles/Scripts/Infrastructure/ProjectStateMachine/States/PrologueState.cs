@@ -14,7 +14,6 @@ using UI.Confirmation;
 using UI.DialogueScreen;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Events;
 using Event = Data.Dialogue.Event;
 
 namespace Infrastructure.ProjectStateMachine.States
@@ -37,7 +36,6 @@ namespace Infrastructure.ProjectStateMachine.States
         public GameBootstrap Initializer { get; }
         private readonly IWindowService _windowService;
         private readonly ISoundService _soundService;
-        private readonly IProgressService _progressService;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly IDialogueService _dialogueService;
         private readonly ISaveLoadService _saveLoadService;
@@ -45,7 +43,6 @@ namespace Infrastructure.ProjectStateMachine.States
 
         private const float SECONDS_DELAY_DEFAULT = 0.05f;
 
-        private Coroutine _displayTypingCoroutine;
         private DialogueUI _dialogueUI;
         private Dialogue _dialogues;
 
@@ -119,7 +116,7 @@ namespace Infrastructure.ProjectStateMachine.States
             _dialogueUI.SetAvatar(_dialogueService.GetCharacter(phrase.CharacterType).Avatar);
             _dialogueUI.SetText(string.Empty);
 
-            _displayTypingCoroutine = _coroutineRunner.StartCoroutine(DisplayTyping(phrase.TextLocalization[0].Text));
+            _coroutineRunner.StartCoroutine(DisplayTyping(phrase.TextLocalization[0].Text));
         }
 
         private IEnumerator DisplayTyping(string text)

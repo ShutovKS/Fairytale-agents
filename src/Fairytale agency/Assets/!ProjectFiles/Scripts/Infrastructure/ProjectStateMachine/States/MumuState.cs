@@ -1,11 +1,11 @@
 using Data.GameData;
 using Infrastructure.ProjectStateMachine.Base;
+using Infrastructure.Services.Dialogue;
 using Infrastructure.Services.GameData.Progress;
 using Infrastructure.Services.GameData.SaveLoad;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.WindowsService;
 using Mumu;
-using UI.Mumu.Scrips;
 using UnityEngine;
 
 namespace Infrastructure.ProjectStateMachine.States
@@ -13,12 +13,13 @@ namespace Infrastructure.ProjectStateMachine.States
     public class MumuState : IState<GameBootstrap>, IEnterable, IExitable
     {
         public MumuState(GameBootstrap initializer, ISaveLoadService saveLoadService, IProgressService progressService,
-            IWindowService windowService, PlayerInputActionReader inputActionReader)
+            IWindowService windowService, PlayerInputActionReader inputActionReader, IDialogueService dialogueService)
         {
             _saveLoadService = saveLoadService;
             _progressService = progressService;
             _windowService = windowService;
             _inputActionReader = inputActionReader;
+            _dialogueService = dialogueService;
             Initializer = initializer;
         }
 
@@ -27,15 +28,14 @@ namespace Infrastructure.ProjectStateMachine.States
         private readonly IProgressService _progressService;
         private readonly IWindowService _windowService;
         private readonly PlayerInputActionReader _inputActionReader;
+        private readonly IDialogueService _dialogueService;
 
         private GameManager _gameManager;
 
         public async void OnEnter()
         {
-            var mumuUI = await _windowService.OpenAndGetComponent<MumuUI>(WindowID.Mumu);
-
             _gameManager = GameManager.Instance;
-            _gameManager.StartGame(mumuUI);
+            await _gameManager.StartGame(_windowService, _dialogueService);
 
             _gameManager.OnLost += Lost;
             _gameManager.OnWon += Won;
@@ -49,6 +49,7 @@ namespace Infrastructure.ProjectStateMachine.States
         public void OnExit()
         {
             _windowService.Close(WindowID.Mumu);
+            _windowService.Close(WindowID.Dialogue);
             _windowService.Open(WindowID.Loading);
 
             _gameManager.OnLost -= Lost;

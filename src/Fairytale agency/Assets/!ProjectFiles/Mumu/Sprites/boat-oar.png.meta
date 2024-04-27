@@ -182,7 +182,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      boat-oar_0: 6314328054194556665
+      boat-oar_1: 3713025689918580279
+      boat-oar_2: 6438484314427084240
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

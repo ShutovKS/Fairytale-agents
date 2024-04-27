@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7732936b969943929211a75a6ddbd386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  <Health>k__BackingField: 100
 --- !u!50 &124486248750616823
 Rigidbody2D:
   serializedVersion: 4
@@ -303,6 +303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4274809072977250584}
+  - component: {fileID: 5677458647497850859}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -327,6 +328,21 @@ Transform:
   - {fileID: 5480304519439918513}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5677458647497850859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2429811667524697229}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b83e979fdd4125826dbb4c2fd6e637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 0}
+  speed: 1
+  stoppingDistance: 0.1
 --- !u!1 &3489461888633378293
 GameObject:
   m_ObjectHideFlags: 0
