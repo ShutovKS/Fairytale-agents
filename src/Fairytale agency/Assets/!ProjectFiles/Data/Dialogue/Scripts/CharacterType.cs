@@ -4,5 +4,7 @@ namespace Data.Dialogue
     {
         None = 0,
         MainCharacter = 1,
+        
+        MumuGerasimov = 21,
     }
 }

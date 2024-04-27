@@ -7,40 +7,42 @@ using Infrastructure.Services.AssetsAddressables;
 using Infrastructure.Services.CoroutineRunner;
 using Infrastructure.Services.Dialogue;
 using Infrastructure.Services.GameData.Progress;
+using Infrastructure.Services.GameData.SaveLoad;
 using Infrastructure.Services.SoundsService;
 using Infrastructure.Services.WindowsService;
 using UI.Confirmation;
 using UI.DialogueScreen;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Events;
 using Event = Data.Dialogue.Event;
 
 namespace Infrastructure.ProjectStateMachine.States
 {
     public class PrologueState : IState<GameBootstrap>, IEnterable, IExitable
     {
-        public PrologueState(GameBootstrap initializer, IWindowService windowService, IProgressService progressService,
-            ISoundService soundService, ICoroutineRunner coroutineRunner, IDialogueService dialogueService)
+        public PrologueState(GameBootstrap initializer, IWindowService windowService, ISoundService soundService,
+            ICoroutineRunner coroutineRunner, IDialogueService dialogueService, ISaveLoadService saveLoadService,
+            IProgressService progressService)
         {
             _windowService = windowService;
-            _progressService = progressService;
             _soundService = soundService;
             _coroutineRunner = coroutineRunner;
             _dialogueService = dialogueService;
+            _saveLoadService = saveLoadService;
+            _progressService = progressService;
             Initializer = initializer;
         }
 
         public GameBootstrap Initializer { get; }
         private readonly IWindowService _windowService;
         private readonly ISoundService _soundService;
-        private readonly IProgressService _progressService;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly IDialogueService _dialogueService;
+        private readonly ISaveLoadService _saveLoadService;
+        private readonly IProgressService _progressService;
 
         private const float SECONDS_DELAY_DEFAULT = 0.05f;
 
-        private Coroutine _displayTypingCoroutine;
         private DialogueUI _dialogueUI;
         private Dialogue _dialogues;
 
@@ -55,10 +57,10 @@ namespace Infrastructure.ProjectStateMachine.States
             _dialogues = _dialogueService.GetDialogues(DialogueID.Prologue);
 
             await OpenWindow();
-            
             SetDialog(0);
 
             _progressService.PlayerProgress.gameStageType = GameStageType.Prologue;
+            _saveLoadService.SaveProgress();
         }
 
         private async Task LoadSceneAsync()
@@ -114,7 +116,7 @@ namespace Infrastructure.ProjectStateMachine.States
             _dialogueUI.SetAvatar(_dialogueService.GetCharacter(phrase.CharacterType).Avatar);
             _dialogueUI.SetText(string.Empty);
 
-            _displayTypingCoroutine = _coroutineRunner.StartCoroutine(DisplayTyping(phrase.TextLocalization[0].Text));
+            _coroutineRunner.StartCoroutine(DisplayTyping(phrase.TextLocalization[0].Text));
         }
 
         private IEnumerator DisplayTyping(string text)
@@ -143,6 +145,7 @@ namespace Infrastructure.ProjectStateMachine.States
 
         private void DialogueEnded()
         {
+            Initializer.StateMachine.SwitchState<LoadingGameplayState, GameStageType>(GameStageType.Mumu);
         }
     }
 }

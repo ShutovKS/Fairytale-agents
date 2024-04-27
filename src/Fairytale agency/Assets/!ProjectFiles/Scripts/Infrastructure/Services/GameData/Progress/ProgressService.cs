@@ -2,9 +2,9 @@
 {
     public class ProgressService : IProgressService
     {
-        public Data.GameData.PlayerProgress PlayerProgress { get; private set; }
+        public PlayerProgress PlayerProgress { get; private set; }
 
-        public void SetProgress(Data.GameData.PlayerProgress playerProgress)
+        public void SetProgress(PlayerProgress playerProgress)
         {
             PlayerProgress = playerProgress;
         }

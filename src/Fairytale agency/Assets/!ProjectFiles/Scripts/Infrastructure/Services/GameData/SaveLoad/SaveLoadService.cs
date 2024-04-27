@@ -34,7 +34,7 @@ namespace Infrastructure.Services.GameData.SaveLoad
             File.WriteAllText(_saveFilePath, encryptedData);
         }
 
-        public Data.GameData.PlayerProgress LoadProgress()
+        public PlayerProgress LoadProgress()
         {
             if (!File.Exists(_saveFilePath))
             {
@@ -47,7 +47,7 @@ namespace Infrastructure.Services.GameData.SaveLoad
             
             var decryptedData = DecryptData(encryptedData);
             
-            return decryptedData.ToDeserialized<Data.GameData.PlayerProgress>();
+            return decryptedData.ToDeserialized<PlayerProgress>();
         }
         
         private string EncryptData(string data)

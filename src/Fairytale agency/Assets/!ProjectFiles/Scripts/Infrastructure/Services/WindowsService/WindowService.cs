@@ -51,6 +51,10 @@ namespace Infrastructure.Services.WindowsService
                     await _uiFactory.CreateScreen(AssetsAddressableConstants.CONFIRMATION_SCREEN,
                         WindowID.Confirmation);
                     break;
+                case WindowID.Mumu:
+                    await _uiFactory.CreateScreen(AssetsAddressableConstants.MUMU_SCREEN,
+                        WindowID.Mumu);
+                    break;
 
                 default: throw new ArgumentOutOfRangeException(nameof(windowID), windowID, null);
             }
@@ -59,28 +63,7 @@ namespace Infrastructure.Services.WindowsService
 
         public void Close(WindowID windowID)
         {
-            switch (windowID)
-            {
-                case WindowID.Unknown:
-                    Debug.Log("Unknown window id + " + windowID);
-                    break;
-                case WindowID.None:
-                    break;
-                case WindowID.Loading:
-                    _uiFactory.DestroyScreen(WindowID.Loading);
-                    break;
-                case WindowID.MainMenu:
-                    _uiFactory.DestroyScreen(WindowID.MainMenu);
-                    break;
-                case WindowID.Dialogue:
-                    _uiFactory.DestroyScreen(WindowID.Dialogue);
-                    break;
-                case WindowID.Confirmation:
-                    _uiFactory.DestroyScreen(WindowID.Confirmation);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(windowID), windowID, null);
-            }
+            _uiFactory.DestroyScreen(windowID);
         }
     }
 }

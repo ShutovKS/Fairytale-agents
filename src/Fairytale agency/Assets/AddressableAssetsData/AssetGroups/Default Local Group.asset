@@ -40,6 +40,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 21568e500e217574ba2d786d28a8e9cf
+    m_Address: MumuScene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6533f70fdb639304dab390272ff464ec
+    m_Address: Empty2DScene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66026268ea3e6744cbf6accf080610e3
+    m_Address: MumuScreen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 904b04ece720d344d84ce9e6c8975039, type: 2}
   m_SchemaSet:

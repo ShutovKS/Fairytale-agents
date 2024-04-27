@@ -1,4 +1,6 @@
-namespace Data.GameData
+using Data.GameData;
+
+namespace Infrastructure.Services.GameData
 {
     public partial class PlayerProgress
     {

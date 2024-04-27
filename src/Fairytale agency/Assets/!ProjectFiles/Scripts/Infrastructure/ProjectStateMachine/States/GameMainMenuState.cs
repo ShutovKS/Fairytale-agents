@@ -7,9 +7,7 @@ using Infrastructure.Services.GameData.SaveLoad;
 using Infrastructure.Services.WindowsService;
 using UI.MainMenuScreen;
 using UnityEditor;
-using UnityEngine;
 using UnityEngine.AddressableAssets;
-using PlayerProgress = Data.GameData.PlayerProgress;
 
 namespace Infrastructure.ProjectStateMachine.States
 {

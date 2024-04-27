@@ -8,5 +8,6 @@
         MainMenu = 2,
         Dialogue = 3,
         Confirmation = 4,
+        Mumu = 5,
     }
 }
