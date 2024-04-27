@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CharacterType>k__BackingField: 1
   <Name>k__BackingField: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
-  <Avatar>k__BackingField: {fileID: 772928226838273668, guid: 0d7a26fe0c0ee154cb9af14d077bf115, type: 3}
+  <Avatar>k__BackingField: {fileID: 21300000, guid: f997e74a0d703fe46ba002729ad010b9, type: 3}

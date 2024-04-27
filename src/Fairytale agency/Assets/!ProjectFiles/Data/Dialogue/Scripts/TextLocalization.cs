@@ -7,6 +7,6 @@ namespace Data.Dialogue
     public class TextLocalization
     {
         [field: SerializeField] public Language Language { get; private set; }
-        [field: SerializeField] public string Text { get; private set; }
+        [field: SerializeField, TextArea(2,6)] public string Text { get; private set; }
     }
 }

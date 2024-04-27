@@ -22,7 +22,6 @@ namespace Mumu
         [SerializeField] private Boat boat;
         [SerializeField] private BoatMovement boatMovement;
 
-        private const float SECONDS_DELAY_DEFAULT = 0.05f;
         private Phrase CurrentDialogue => _dialogues.Phrases[_currentDialogueId];
 
         private MumuUI _mumuUI;
@@ -30,6 +29,7 @@ namespace Mumu
         private Dialogue _dialogues;
         private IWindowService _windowService;
         private IDialogueService _dialogueService;
+        private BasicDialogOptions _basicDialogOptions;
 
         private int _currentDialogueId;
         private string _currentSoundEffect;
@@ -37,6 +37,7 @@ namespace Mumu
         public void Awake()
         {
             Instance = this;
+            _basicDialogOptions = Resources.Load<BasicDialogOptions>("Configs/BasicDialogOptions");
         }
 
         public async Task StartGame(IWindowService windowService, IDialogueService dialogueService)
@@ -73,9 +74,6 @@ namespace Mumu
             await OpenWindow();
             SetDialog(0);
         }
-
-        //
-
 
         private async Task OpenWindow()
         {
@@ -124,10 +122,10 @@ namespace Mumu
             {
                 currentText += letter;
                 _dialogueUI.SetText(currentText);
-                yield return new WaitForSeconds(SECONDS_DELAY_DEFAULT);
+                yield return new WaitForSeconds(_basicDialogOptions.secondsDelayDefault);
             }
 
-            yield return new WaitForSeconds(SECONDS_DELAY_DEFAULT * 5);
+            yield return new WaitForSeconds(_basicDialogOptions.delayAfterDialogueEnds);
 
             SetDialog(_currentDialogueId + 1);
         }

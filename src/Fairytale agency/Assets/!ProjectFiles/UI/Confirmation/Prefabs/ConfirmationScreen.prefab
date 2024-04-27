@@ -140,10 +140,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: No
+  m_text: "\u041D\u0435\u0442"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3cf49e3836fa4c14ea46817743104ce1, type: 2}
-  m_sharedMaterial: {fileID: -2004093190186240419, guid: 3cf49e3836fa4c14ea46817743104ce1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 92395e448771c354ca9382f4ca460ef3, type: 2}
+  m_sharedMaterial: {fileID: -3582923532090683163, guid: 92395e448771c354ca9382f4ca460ef3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -351,10 +351,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Are you sure?
+  m_text: "\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B?"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3cf49e3836fa4c14ea46817743104ce1, type: 2}
-  m_sharedMaterial: {fileID: -2004093190186240419, guid: 3cf49e3836fa4c14ea46817743104ce1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 92395e448771c354ca9382f4ca460ef3, type: 2}
+  m_sharedMaterial: {fileID: -3582923532090683163, guid: 92395e448771c354ca9382f4ca460ef3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -766,10 +766,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Yes
+  m_text: "\u0414\u0430"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3cf49e3836fa4c14ea46817743104ce1, type: 2}
-  m_sharedMaterial: {fileID: -2004093190186240419, guid: 3cf49e3836fa4c14ea46817743104ce1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 92395e448771c354ca9382f4ca460ef3, type: 2}
+  m_sharedMaterial: {fileID: -3582923532090683163, guid: 92395e448771c354ca9382f4ca460ef3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1005,7 +1005,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 2

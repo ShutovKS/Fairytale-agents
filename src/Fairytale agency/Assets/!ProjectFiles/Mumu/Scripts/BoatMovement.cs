@@ -31,6 +31,8 @@ namespace Mumu
                 yield return null;
             }
 
+            yield return new WaitForSeconds(1);
+
             OnCompleted?.Invoke();
         }
     }

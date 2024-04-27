@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Character - MumuGerasimov
   m_EditorClassIdentifier: 
   <CharacterType>k__BackingField: 21
-  <Name>k__BackingField: "\u0413\u0435\u0440\u0430\u0441\u0438\u043C\u043E\u0432"
-  <Avatar>k__BackingField: {fileID: 3136016307045954798, guid: 0d7a26fe0c0ee154cb9af14d077bf115, type: 3}
+  <Name>k__BackingField: "\u0413\u0435\u0440\u0430\u0441\u0438\u043C"
+  <Avatar>k__BackingField: {fileID: 21300000, guid: 96e86e2c3012ad34b978db59f7bd0f05, type: 3}
