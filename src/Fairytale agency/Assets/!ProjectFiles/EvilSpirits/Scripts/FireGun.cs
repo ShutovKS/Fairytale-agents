@@ -11,7 +11,7 @@ namespace EvilSpirits
         [SerializeField] private Transform projectileSpawn;
         [SerializeField] private float delayBetweenShots = 1f;
 
-        private bool _isYouCanShoot;
+        private bool _isYouCanShoot = true;
         private static readonly int isFiring = Animator.StringToHash("isFiring");
 
         public void Shot()

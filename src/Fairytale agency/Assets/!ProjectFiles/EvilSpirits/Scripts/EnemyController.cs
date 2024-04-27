@@ -5,10 +5,13 @@ namespace EvilSpirits
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] private Animator animator;
-        [SerializeField] private CharacterController controller;
         [SerializeField] private Transform projectileSpawn;
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private float health = 100.0f;
+
+        [SerializeField] private WaypointPatrol waypointPatrol;
+        [SerializeField] private Observer observer;
+        [SerializeField] private PlayerChase playerChase;
 
         private GameObject _collidingObject;
         private Transform _playerTransform;
@@ -25,6 +28,13 @@ namespace EvilSpirits
         private void Start()
         {
             _playerTransform = FindAnyObjectByType<PlayerController>().transform;
+            observer.OnPlayerSpotted += () =>
+            {
+                _hasSpottedPlayer = true;
+                waypointPatrol.enabled = false;
+                playerChase.enabled = true;
+                playerChase.SetPlayer(_playerTransform);
+            };
         }
 
         public void TakeDamage(float value)
@@ -36,7 +46,7 @@ namespace EvilSpirits
                 animator.SetBool(isPursuing, false);
                 animator.SetBool(isDead, true);
                 GetComponent<CapsuleCollider>().enabled = false;
-                controller.enabled = false;
+                playerChase.enabled = false;
                 transform.position = new Vector3(transform.position.x, 0.075f, transform.position.z);
                 transform.Rotate(-90, 0, 0);
                 GetComponent<Collider>().enabled = false;
@@ -46,46 +56,17 @@ namespace EvilSpirits
 
         private void Update()
         {
-            transform.LookAt(new Vector3(_playerTransform.position.x, 0.0f, _playerTransform.position.z));
-            _targetDirection = _playerTransform.position - transform.position;
-            _angleToPlayer = (Vector3.Angle(_targetDirection, transform.forward));
-
             if (animator.GetBool(isDead) || health <= 0)
             {
                 return;
             }
 
-            if (_angleToPlayer is >= -90 and <= 90 && !_hasSpottedPlayer)
-            {
-                animator.SetBool(isPursuing, true);
-                _hasSpottedPlayer = true;
-            }
 
             if (_hasSpottedPlayer)
             {
-                if (Vector3.Distance(transform.position, _playerTransform.position) <= 1f)
+                if (!(Vector3.Distance(transform.position, _playerTransform.position) <= 1f))
                 {
-                    animator.SetBool(isPursuing, false);
-                }
-                else
-                {
-                    animator.SetBool(isPursuing, true);
-
-                    if (!animator.GetBool(isAttacking))
-                    {
-                        controller.Move(transform.forward * 1.0f * Time.deltaTime);
-                    }
-                }
-
-                if ((Vector3.Distance(transform.position, _playerTransform.position) <= 20f) &&
-                    (_attackTimer >= 5f))
-                {
-                    animator.SetBool(isPursuing, false);
-                    animator.SetBool(isAttacking, true);
-                }
-                else
-                {
-                    animator.SetBool(isAttacking, false);
+                    playerChase.enabled = !animator.GetBool(isAttacking);
                 }
             }
 

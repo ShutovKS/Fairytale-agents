@@ -57,12 +57,12 @@ namespace EvilSpirits
 
         private void OnEnable()
         {
-            inputActionReader.Attack += fireGun.Shot;
+            inputActionReader.Jump += fireGun.Shot;
         }
 
         private void OnDisable()
         {
-            inputActionReader.Attack -= fireGun.Shot;
+            inputActionReader.Jump -= fireGun.Shot;
         }
     }
 }
