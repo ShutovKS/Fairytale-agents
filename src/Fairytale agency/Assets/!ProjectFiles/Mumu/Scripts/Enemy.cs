@@ -43,9 +43,10 @@ namespace Mumu
                 var direction = (targetTransform.position - transform.position).normalized;
                 transform.position += direction * travelDistance;
 
-                yield return null;
-                yield return null;
-                yield return null;
+                for (var i = 0; i < 10; i++)
+                {
+                    yield return null;
+                }
 
                 transform.position -= direction * travelDistance;
 

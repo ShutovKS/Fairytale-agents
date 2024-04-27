@@ -10,6 +10,7 @@ namespace Mumu
         [SerializeField] private Transform paddleTransform;
         [SerializeField] private Collider2D paddleCollider;
         [SerializeField] private float delayAttack;
+        [SerializeField] private Renderer renderer;
 
         private bool _isAttack;
 
@@ -48,8 +49,15 @@ namespace Mumu
             _isAttack = true;
             paddleTransform.rotation = Quaternion.Euler(0, 0, rotation);
             paddleCollider.enabled = true;
-            yield return null;
+            renderer.enabled = true;
+
+            for (var i = 0; i < 20; i++)
+            {
+                yield return null;
+            }
+
             paddleCollider.enabled = false;
+            renderer.enabled = false;
 
             yield return new WaitForSeconds(delayAttack);
             _isAttack = false;
