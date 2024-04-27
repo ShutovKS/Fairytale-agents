@@ -26,11 +26,13 @@ namespace Mumu
             }
 
             var vector2 = _inputActionReader.MovementValue;
-            Debug.Log(vector2);
             switch (vector2.x, vector2.y)
             {
                 case (0, 1):
                     StartCoroutine(Attack(0));
+                    break;
+                case (-1, 0):
+                    StartCoroutine(Attack(90));
                     break;
                 case (0, -1):
                     StartCoroutine(Attack(180));
@@ -38,17 +40,11 @@ namespace Mumu
                 case (1, 0):
                     StartCoroutine(Attack(270));
                     break;
-                case (-1, 0):
-                    StartCoroutine(Attack(90));
-                    break;
-                default:
-                    break;
             }
         }
 
         private IEnumerator Attack(float rotation)
         {
-            Debug.Log($"Attack");
             _isAttack = true;
             paddleTransform.rotation = Quaternion.Euler(0, 0, rotation);
             paddleCollider.enabled = true;
