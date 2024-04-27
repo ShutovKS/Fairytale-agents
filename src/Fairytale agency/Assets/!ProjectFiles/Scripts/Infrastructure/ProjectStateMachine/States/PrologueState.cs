@@ -70,7 +70,7 @@ namespace Infrastructure.ProjectStateMachine.States
         private async Task OpenWindow()
         {
             _dialogueUI = await _windowService.OpenAndGetComponent<DialogueUI>(WindowID.Dialogue);
-            _dialogueUI.Buttons.OnBackButtonClicked = ConfirmExitInMenu;
+            _dialogueUI.OnBackButtonClicked = ConfirmExitInMenu;
 
             _windowService.Close(WindowID.Loading);
         }
@@ -107,12 +107,12 @@ namespace Infrastructure.ProjectStateMachine.States
         {
             if (phrase.Background != null)
             {
-                _dialogueUI.Background.SetImage(phrase.Background);
+                _dialogueUI.SetImage(phrase.Background);
             }
 
-            _dialogueUI.DialogueText.SetAuthorName(_dialogueService.GetCharacter(phrase.CharacterType).Name);
-            _dialogueUI.DialogueText.SetText(string.Empty);
-            _dialogueUI.Person.SetAvatar(_dialogueService.GetCharacter(phrase.CharacterType).Avatar);
+            _dialogueUI.SetAuthorName(_dialogueService.GetCharacter(phrase.CharacterType).Name);
+            _dialogueUI.SetAvatar(_dialogueService.GetCharacter(phrase.CharacterType).Avatar);
+            _dialogueUI.SetText(string.Empty);
 
             _displayTypingCoroutine = _coroutineRunner.StartCoroutine(DisplayTyping(phrase.TextLocalization[0].Text));
         }
@@ -123,7 +123,7 @@ namespace Infrastructure.ProjectStateMachine.States
             foreach (var letter in text)
             {
                 currentText += letter;
-                _dialogueUI.DialogueText.SetText(currentText);
+                _dialogueUI.SetText(currentText);
                 yield return new WaitForSeconds(SECONDS_DELAY_DEFAULT);
             }
 

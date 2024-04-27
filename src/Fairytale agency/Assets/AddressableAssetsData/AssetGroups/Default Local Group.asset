@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: 4f0700f433f4c1a44b00094819b39693
   m_SerializeEntries:
-  - m_GUID: abb2b9a232d990b419f826f454098235
+  - m_GUID: 6533f70fdb639304dab390272ff464ec
     m_Address: Empty2DScene
     m_ReadOnly: 0
     m_SerializedLabels: []
