@@ -8,15 +8,18 @@ namespace Mumu
     public class EnemiesSpawner : MonoBehaviour
     {
         public Action<int> OnNumberDeadEnemies;
+        public Action<int> OnNumberRemainingEnemies;
         public Action OnAllDeadEnemies;
 
         [SerializeField] private Transform playerTransform;
         [SerializeField] private GameObject[] enemiesPrefabs;
         [SerializeField] private Transform[] spawnPoints;
         [SerializeField] private float frequencySpawn;
-        [SerializeField] private float countEnemies;
+        [SerializeField] private int countEnemies;
 
-        private int _numberDeadEnemies;
+        public int NumberDeadEnemies { get; private set; }
+        public int NumberRemainingEnemies => _numberLivingEnemies + countEnemies;
+        
         private int _numberLivingEnemies;
         private bool _isSpawn;
 
@@ -44,6 +47,8 @@ namespace Mumu
                 instance.GetComponent<Enemy>().targetTransform = playerTransform;
                 instance.GetComponent<Enemy>().OnDead = EnemyDead;
 
+                OnNumberRemainingEnemies?.Invoke(countEnemies + _numberLivingEnemies);
+
                 if (countEnemies <= 0)
                 {
                     yield break;
@@ -56,11 +61,11 @@ namespace Mumu
         private void EnemyDead()
         {
             Debug.Log($"Враг мёртв");
-            _numberDeadEnemies++;
+            NumberDeadEnemies++;
             _numberLivingEnemies--;
-            OnNumberDeadEnemies?.Invoke(_numberDeadEnemies);
+            OnNumberDeadEnemies?.Invoke(NumberDeadEnemies);
 
-            if (_numberLivingEnemies == 0 && _numberDeadEnemies == 0)
+            if (_numberLivingEnemies == 0 && NumberDeadEnemies == 0)
             {
                 OnAllDeadEnemies?.Invoke();
                 Debug.Log($"Все мертвы");

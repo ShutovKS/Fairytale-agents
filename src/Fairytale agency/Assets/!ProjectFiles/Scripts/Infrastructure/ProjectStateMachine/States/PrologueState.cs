@@ -114,6 +114,7 @@ namespace Infrastructure.ProjectStateMachine.States
         {
             ResetData();
             _windowService.Close(WindowID.Dialogue);
+            _windowService.Open(WindowID.Loading);
         }
 
         private void ResetData()
