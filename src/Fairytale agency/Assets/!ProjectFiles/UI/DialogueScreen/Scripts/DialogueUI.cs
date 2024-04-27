@@ -1,7 +1,10 @@
 ﻿#region
 
+using System;
+using TMPro;
 using UI.Base;
 using UnityEngine;
+using UnityEngine.UI;
 
 #endregion
 
@@ -9,19 +12,38 @@ namespace UI.DialogueScreen
 {
     public class DialogueUI : BaseScreen
     {
-        [SerializeField] private Canvas canvas;
+        public Action OnBackButtonClicked;
 
-        [field: SerializeField] public AnswerOptionsUI Answers { get; private set; }
-        [field: SerializeField] public BackgroundUI Background { get; private set; }
-        [field: SerializeField] public PersonAvatarUI Person { get; private set; }
-        [field: SerializeField] public DialogueTextUI DialogueText { get; private set; }
-        [field: SerializeField] public ButtonsUI Buttons { get; private set; }
-        [field: SerializeField] public HistoryUI History { get; private set; }
-        
+        [SerializeField] private Image imageBackground;
+        [SerializeField] private Image avatarImage;
+        [SerializeField] private TextMeshProUGUI authorNameText;
+        [SerializeField] private TextMeshProUGUI textText;
+        [SerializeField] private Button backButton;
 
-        public void SetActivePanel(bool value)
+        protected override void Awake()
         {
-            canvas.enabled = value;
+            backButton.RegisterNewCallback(() => OnBackButtonClicked?.Invoke());
+            base.Awake();
+        }
+
+        public void SetAuthorName(string authorName)
+        {
+            authorNameText.text = authorName;
+        }
+
+        public void SetText(string text)
+        {
+            textText.text = text;
+        }
+
+        public void SetAvatar(Sprite sprite)
+        {
+            avatarImage.sprite = sprite;
+        }
+
+        public void SetImage(Sprite sprite)
+        {
+            imageBackground.sprite = sprite;
         }
     }
 }
