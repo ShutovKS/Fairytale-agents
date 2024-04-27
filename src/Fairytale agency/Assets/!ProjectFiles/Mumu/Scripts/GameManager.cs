@@ -1,13 +1,6 @@
 using System;
-using System.Collections;
-using System.Threading.Tasks;
-using Data.Dialogue;
-using Infrastructure.Services.WindowsService;
-using UI.Confirmation;
-using UI.DialogueScreen;
 using UI.Mumu.Scrips;
 using UnityEngine;
-using Event = UnityEngine.Event;
 
 namespace Mumu
 {
