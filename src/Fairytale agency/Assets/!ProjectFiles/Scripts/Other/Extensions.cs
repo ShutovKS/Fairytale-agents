@@ -4,7 +4,6 @@ using Infrastructure.Services.GameData;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.UI;
-using PlayerProgress = Data.GameData.PlayerProgress;
 
 public static class Extensions
 {

@@ -3,6 +3,8 @@ using Data.GameData;
 using Infrastructure.ProjectStateMachine.Base;
 using Infrastructure.Services.AssetsAddressables;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 
 namespace Infrastructure.ProjectStateMachine.States
 {
@@ -17,12 +19,17 @@ namespace Infrastructure.ProjectStateMachine.States
 
         public void OnEnter(GameStageType gameStageType)
         {
+            AsyncOperationHandle<SceneInstance> asyncOperation;
             switch (gameStageType)
             {
                 case GameStageType.None:
                 case GameStageType.Prologue:
-                    var asyncOperation = Addressables.LoadSceneAsync(AssetsAddressableConstants.EMPTY_2D_SCENE);
+                    asyncOperation = Addressables.LoadSceneAsync(AssetsAddressableConstants.EMPTY_2D_SCENE);
                     asyncOperation.Completed += _ => Initializer.StateMachine.SwitchState<PrologueState>();
+                    break;
+                case GameStageType.Mumu:
+                    asyncOperation = Addressables.LoadSceneAsync(AssetsAddressableConstants.MUMU_SCENE);
+                    asyncOperation.Completed += _ => Initializer.StateMachine.SwitchState<MumuState>();
                     break;
                 default: throw new ArgumentOutOfRangeException();
             }

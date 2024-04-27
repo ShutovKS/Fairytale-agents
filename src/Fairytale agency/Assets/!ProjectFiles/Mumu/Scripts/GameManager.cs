@@ -5,8 +5,8 @@ namespace Mumu
 {
     public class GameManager : MonoBehaviour
     {
-        public Action Lost;
-        public Action Won;
+        public event Action OnLost;
+        public event Action OnWon;
         public static GameManager Instance { get; private set; }
 
         [SerializeField] private EnemiesSpawner enemiesSpawner;
@@ -19,10 +19,10 @@ namespace Mumu
 
         private void Start()
         {
-            enemiesSpawner.OnAllDeadEnemies = Won;
+            enemiesSpawner.OnAllDeadEnemies = OnWon;
 
             boat.OnDead += enemiesSpawner.StopSpawn;
-            boat.OnDead += Lost;
+            boat.OnDead += OnLost;
         }
 
         public void StartGame()

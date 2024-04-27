@@ -3,7 +3,6 @@ using Infrastructure.Services.AssetsAddressables;
 using Infrastructure.Services.GameData;
 using Infrastructure.Services.GameData.Progress;
 using Infrastructure.Services.GameData.SaveLoad;
-using PlayerProgress = Data.GameData.PlayerProgress;
 
 namespace Infrastructure.ProjectStateMachine.States
 {

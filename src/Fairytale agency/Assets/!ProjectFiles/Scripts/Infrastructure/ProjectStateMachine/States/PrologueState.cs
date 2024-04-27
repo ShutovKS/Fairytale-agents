@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Threading.Tasks;
 using Data.Dialogue;
+using Data.GameData;
 using Infrastructure.ProjectStateMachine.Base;
 using Infrastructure.Services.AssetsAddressables;
 using Infrastructure.Services.CoroutineRunner;
 using Infrastructure.Services.Dialogue;
 using Infrastructure.Services.GameData.Progress;
+using Infrastructure.Services.GameData.SaveLoad;
 using Infrastructure.Services.SoundsService;
 using Infrastructure.Services.WindowsService;
 using UI.Confirmation;
@@ -19,23 +21,26 @@ namespace Infrastructure.ProjectStateMachine.States
 {
     public class PrologueState : IState<GameBootstrap>, IEnterable, IExitable
     {
-        public PrologueState(GameBootstrap initializer, IWindowService windowService, IProgressService progressService,
-            ISoundService soundService, ICoroutineRunner coroutineRunner, IDialogueService dialogueService)
+        public PrologueState(GameBootstrap initializer, IWindowService windowService, ISoundService soundService,
+            ICoroutineRunner coroutineRunner, IDialogueService dialogueService, ISaveLoadService saveLoadService,
+            IProgressService progressService)
         {
             _windowService = windowService;
-            _progressService = progressService;
             _soundService = soundService;
             _coroutineRunner = coroutineRunner;
             _dialogueService = dialogueService;
+            _saveLoadService = saveLoadService;
+            _progressService = progressService;
             Initializer = initializer;
         }
 
         public GameBootstrap Initializer { get; }
         private readonly IWindowService _windowService;
-        private readonly IProgressService _progressService;
         private readonly ISoundService _soundService;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly IDialogueService _dialogueService;
+        private readonly ISaveLoadService _saveLoadService;
+        private readonly IProgressService _progressService;
 
         private const float SECONDS_DELAY_DEFAULT = 0.05f;
         private const float SECONDS_DELAY_FAST = 0.005f;
@@ -61,6 +66,9 @@ namespace Infrastructure.ProjectStateMachine.States
             _dialogues = _dialogueService.GetDialogues(DialogueID.Prologue);
             await OpenWindow();
             StartDialogue();
+
+            _progressService.PlayerProgress.gameStageType = GameStageType.Prologue;
+            _saveLoadService.SaveProgress();
         }
 
         private async Task LoadSceneAsync()
@@ -250,6 +258,7 @@ namespace Infrastructure.ProjectStateMachine.States
 
         private void DialogueEnded()
         {
+            Initializer.StateMachine.SwitchState<LoadingGameplayState, GameStageType>(GameStageType.Mumu);
         }
     }
 }
