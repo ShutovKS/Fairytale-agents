@@ -41,6 +41,7 @@ namespace Infrastructure.Services.Input
             _playerInputAction = new PlayerInputActions();
 
             _playerInputAction.UI.SetCallbacks(this);
+            _playerInputAction.Player.SetCallbacks(this);
             _playerInputAction.Enable();
         }
 
