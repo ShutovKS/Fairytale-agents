@@ -40,7 +40,7 @@ namespace Infrastructure.ProjectStateMachine.States
             _gameManager.OnLost += Lost;
             _gameManager.OnWon += Won;
 
-            _progressService.PlayerProgress.gameStageType = GameStageType.Prologue;
+            _progressService.PlayerProgress.gameStageType = GameStageType.Mumu;
             _saveLoadService.SaveProgress();
 
             _windowService.Close(WindowID.Loading);

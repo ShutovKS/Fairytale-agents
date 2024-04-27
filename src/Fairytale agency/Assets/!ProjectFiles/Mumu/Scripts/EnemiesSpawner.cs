@@ -19,7 +19,7 @@ namespace Mumu
 
         public int NumberDeadEnemies { get; private set; }
         public int NumberRemainingEnemies => _numberLivingEnemies + countEnemies;
-        
+
         private int _numberLivingEnemies;
         private bool _isSpawn;
 
@@ -44,10 +44,11 @@ namespace Mumu
                     enemiesPrefabs[Random.Range(0, enemiesPrefabs.Length)],
                     spawnPoints[Random.Range(0, spawnPoints.Length)].position,
                     Quaternion.identity);
+                instance.GetComponent<TurnTowardsTarget>().targetTransform = playerTransform;
                 instance.GetComponent<Enemy>().targetTransform = playerTransform;
                 instance.GetComponent<Enemy>().OnDead = EnemyDead;
 
-                OnNumberRemainingEnemies?.Invoke(countEnemies + _numberLivingEnemies);
+                OnNumberRemainingEnemies?.Invoke(NumberRemainingEnemies);
 
                 if (countEnemies <= 0)
                 {
@@ -60,15 +61,13 @@ namespace Mumu
 
         private void EnemyDead()
         {
-            Debug.Log($"Враг мёртв");
             NumberDeadEnemies++;
             _numberLivingEnemies--;
             OnNumberDeadEnemies?.Invoke(NumberDeadEnemies);
 
-            if (_numberLivingEnemies == 0 && NumberDeadEnemies == 0)
+            if (NumberRemainingEnemies <= 0)
             {
                 OnAllDeadEnemies?.Invoke();
-                Debug.Log($"Все мертвы");
             }
         }
     }

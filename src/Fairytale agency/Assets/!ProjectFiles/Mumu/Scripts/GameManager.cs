@@ -29,9 +29,9 @@ namespace Mumu
 
             boat.OnHealthChange = _mumuUI.SetHealthPoints;
             boat.OnDead += enemiesSpawner.StopSpawn;
-            boat.OnDead += OnLost;
+            boat.OnDead += () => OnLost?.Invoke();
 
-            enemiesSpawner.OnAllDeadEnemies = OnWon;
+            enemiesSpawner.OnAllDeadEnemies = () => OnWon?.Invoke();
             enemiesSpawner.OnNumberDeadEnemies = _mumuUI.SetDestroyed;
             enemiesSpawner.OnNumberRemainingEnemies = _mumuUI.SetLeft;
 
