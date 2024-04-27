@@ -1,16 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Beanstalk
 {
     public class BoxScript : MonoBehaviour
     {
+        public Action OnLanded;
+        public Action OnGameOver;
+
         private float _minX = -2.2f, _maxX = 2.2f;
         private bool _canMove;
         private float _moveSpeed = 2f;
         private Rigidbody2D _myBody;
-        private bool _gameOver;
         private bool _ignoreCollision;
-        private bool _ignoreTrigger;
 
         private void Awake()
         {
@@ -26,8 +29,6 @@ namespace Beanstalk
             {
                 _moveSpeed *= -1.0f;
             }
-
-            GameplayController._instance.currentBox = this;
         }
 
         private void Update()
@@ -39,7 +40,7 @@ namespace Beanstalk
         {
             if (_canMove)
             {
-                Vector3 temp = transform.position;
+                var temp = transform.position;
 
                 temp.x += _moveSpeed * Time.deltaTime;
 
@@ -62,25 +63,6 @@ namespace Beanstalk
             _myBody.gravityScale = Random.Range(2, 4);
         }
 
-        private void Landed()
-        {
-            if (_gameOver)
-            {
-                return;
-            }
-
-            _ignoreCollision = true;
-            _ignoreTrigger = true;
-
-            GameplayController._instance.SpawnNewBox();
-            GameplayController._instance.MoveCamera();
-        }
-
-        private void RestartGame()
-        {
-            GameplayController._instance.Restart();
-        }
-
         private void OnCollisionEnter2D(Collision2D target)
         {
             if (_ignoreCollision)
@@ -88,33 +70,18 @@ namespace Beanstalk
                 return;
             }
 
-            if (target.gameObject.CompareTag($"Platform"))
+            if (target.gameObject.CompareTag($"Platform") || target.gameObject.CompareTag($"Box"))
             {
-                Invoke(nameof(Landed), 2.0f);
                 _ignoreCollision = true;
-            }
-
-            if (target.gameObject.CompareTag($"Box"))
-            {
-                Invoke(nameof(Landed), 2.0f);
-                _ignoreCollision = true;
+                OnLanded?.Invoke();
             }
         }
 
-
         private void OnTriggerEnter2D(Collider2D target)
         {
-            if (_ignoreTrigger)
-            {
-                return;
-            }
-
             if (target.gameObject.CompareTag($"GameOver"))
             {
-                CancelInvoke(nameof(Landed));
-                _gameOver = true;
-                _ignoreTrigger = true;
-                Invoke(nameof(RestartGame), 2.0f);
+                OnGameOver?.Invoke();
             }
         }
     }
