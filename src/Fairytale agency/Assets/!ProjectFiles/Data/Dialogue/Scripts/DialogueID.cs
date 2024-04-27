@@ -5,6 +5,8 @@ namespace Data.Dialogue
         None = 0,
 
         Prologue = 11,
-        Mumu = 21,
+
+        MumuStart = 21,
+        MumuFinal = 22,
     }
 }

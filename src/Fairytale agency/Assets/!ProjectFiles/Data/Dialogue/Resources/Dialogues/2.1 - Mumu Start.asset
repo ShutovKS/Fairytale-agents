@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c644533a0b941c69a78697ee0de086a, type: 3}
   m_Name: 2.1 - Mumu Start
   m_EditorClassIdentifier: 
-  <DialogueID>k__BackingField: 11
+  <DialogueID>k__BackingField: 21
   <Phrases>k__BackingField:
   - <CharacterType>k__BackingField: 6
     <TextLocalization>k__BackingField:
@@ -92,6 +92,6 @@ MonoBehaviour:
       <Text>k__BackingField: "(\u0413\u0435\u0440\u043E\u0439 \u0441\u043E\u0431\u0438\u0440\u0430\u0435\u0442\u0441\u044F
         \u0438 \u043E\u0442\u043F\u0440\u0430\u0432\u043B\u044F\u0435\u0442\u0441\u044F
         \u043D\u0430 \u0437\u0430\u0434\u0430\u043D\u0438\u0435, \u0447\u0442\u043E\u0431\u044B
-        \u043F\u043E\u043C\u043E\u0447\u044C \u0413\u0435\u0440\u0430\u0441\u0438\u043C\u0443.)  "
+        \u043F\u043E\u043C\u043E\u0447\u044C \u0413\u0435\u0440\u0430\u0441\u0438\u043C\u0443)  "
     <Background>k__BackingField: {fileID: 21300000, guid: 10add6110c7cd4c409b29e5222d9f539, type: 3}
     <Event>k__BackingField: 0

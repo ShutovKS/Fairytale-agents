@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 0}
-  frequencyMoving: 1
+  frequencyMoving: 0.6
   travelDistance: 0.5
   damage: 5
 --- !u!61 &4733459381610296648

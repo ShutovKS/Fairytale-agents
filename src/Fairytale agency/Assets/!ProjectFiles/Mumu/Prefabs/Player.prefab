@@ -50,7 +50,7 @@ MonoBehaviour:
   _inputActionReader: {fileID: 11400000, guid: 52afdfec6aa47be41aff2c2a3d7c9ded, type: 2}
   paddleTransform: {fileID: 4401355970104941844}
   paddleCollider: {fileID: 511663765274355825}
-  delayAttack: 0.5
+  delayAttack: 0.4
   renderer: {fileID: 3250751352786034281}
 --- !u!61 &511663765274355825
 BoxCollider2D:

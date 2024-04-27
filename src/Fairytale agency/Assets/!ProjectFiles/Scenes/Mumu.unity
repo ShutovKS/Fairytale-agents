@@ -178,7 +178,7 @@ MonoBehaviour:
   - {fileID: 655934111}
   - {fileID: 1204876073}
   frequencySpawn: 0.6
-  countEnemies: 0
+  countEnemies: 100
 --- !u!1 &263544758
 GameObject:
   m_ObjectHideFlags: 0
@@ -13152,6 +13152,10 @@ PrefabInstance:
       propertyPath: targetTransform
       value: 
       objectReference: {fileID: 982130810}
+    - target: {fileID: 5909233403321801080, guid: ca26a3e49218baa419411ad128d56814, type: 3}
+      propertyPath: <Health>k__BackingField
+      value: 250
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
