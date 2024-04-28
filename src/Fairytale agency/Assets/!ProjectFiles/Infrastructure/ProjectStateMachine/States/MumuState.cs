@@ -51,7 +51,7 @@ namespace Infrastructure.ProjectStateMachine.States
         private void Lost()
         {
             _windowService.Close(WindowID.Mumu);
-            Initializer.StateMachine.SwitchState<GameMainMenuState>();
+            Initializer.StateMachine.SwitchState<LoadingGameplayState, GameStageType>(GameStageType.Beanstalk);
         }
 
         private void Won()

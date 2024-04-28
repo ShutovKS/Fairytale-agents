@@ -10,5 +10,7 @@
         Confirmation = 4,
         Mumu = 5,
         Beanstalk = 6,
+        
+        Final = 99,
     }
 }

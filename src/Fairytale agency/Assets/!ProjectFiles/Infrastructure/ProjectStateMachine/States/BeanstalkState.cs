@@ -60,7 +60,7 @@ namespace Infrastructure.ProjectStateMachine.States
         private void Lost()
         {
             _windowService.Close(WindowID.Beanstalk);
-            Initializer.StateMachine.SwitchState<GameMainMenuState>();
+            Initializer.StateMachine.SwitchState<LoadingGameplayState, GameStageType>(GameStageType.Final);
         }
 
         private void Won()
@@ -104,7 +104,7 @@ namespace Infrastructure.ProjectStateMachine.States
                 DialogueManager.OnDialogComplete -= NextLevel;
                 _windowService.Close(WindowID.Dialogue);
 
-                Initializer.StateMachine.SwitchState<LoadingGameplayState, GameStageType>(GameStageType.Beanstalk);
+                Initializer.StateMachine.SwitchState<LoadingGameplayState, GameStageType>(GameStageType.Final);
             }
         }
 
