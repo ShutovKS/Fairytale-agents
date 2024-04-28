@@ -23,6 +23,7 @@ namespace Infrastructure.ProjectStateMachine.States
             ISaveLoadService saveLoadService, IProgressService progressService)
         {
             _windowService = windowService;
+            _soundService = soundService;
             _saveLoadService = saveLoadService;
             _progressService = progressService;
             Initializer = initializer;
@@ -30,6 +31,7 @@ namespace Infrastructure.ProjectStateMachine.States
 
         public GameBootstrap Initializer { get; }
         private readonly IWindowService _windowService;
+        private readonly ISoundService _soundService;
         private readonly ISaveLoadService _saveLoadService;
         private readonly IProgressService _progressService;
 
@@ -48,6 +50,9 @@ namespace Infrastructure.ProjectStateMachine.States
             DialogueManager.StartDialog(dialogueUI, DialogueID.Prologue);
             DialogueManager.OnExitInMainMenu += ExitInMainMenu;
             DialogueManager.OnDialogComplete += NextLevel;
+            
+            var audioClip = Resources.Load<AudioClip>("Sounds/menu-sound");
+            _soundService.PlaySoundsClip(audioClip);
 
             _windowService.Close(WindowID.Loading);
         }
