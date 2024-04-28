@@ -57,7 +57,8 @@ namespace Infrastructure.ProjectStateMachine.States
 
         private void OnLoadGameButtonClicked()
         {
-            Initializer.StateMachine.SwitchState<LoadingGameplayState, GameStageType>(GameStageType.Mumu);
+            var stageType = _progressService.PlayerProgress.gameStageType;
+            Initializer.StateMachine.SwitchState<LoadingGameplayState, GameStageType>(stageType);
         }
 
         private static void OnExitButtonClicked()
