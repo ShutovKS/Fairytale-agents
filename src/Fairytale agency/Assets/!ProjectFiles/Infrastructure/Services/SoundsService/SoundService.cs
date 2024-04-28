@@ -20,6 +20,11 @@ namespace Infrastructure.Services.SoundsService
 
         public void PlaySoundsClip(AudioClip audioClip)
         {
+            if (_audioSource.clip != null && _audioSource.clip == audioClip)
+            {
+                return;
+            }
+
             _audioSource.clip = audioClip;
             _audioSource.Play();
 
@@ -28,6 +33,11 @@ namespace Infrastructure.Services.SoundsService
 
         public void PlayMusicClip(AudioClip audioClip)
         {
+            if (_musicSource.clip != null && _musicSource.clip == audioClip)
+            {
+                return;
+            }
+            
             _musicSource.clip = audioClip;
             _musicSource.Play();
 

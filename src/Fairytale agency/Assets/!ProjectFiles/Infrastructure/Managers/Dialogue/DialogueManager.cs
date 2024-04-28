@@ -33,16 +33,18 @@ namespace Infrastructure.Managers.Dialogue
 
         private Phrase CurrentDialogue => _dialogues.Phrases[_currentDialogueId];
 
+        private static BasicDialogOptions _basicDialogOptions;
+
         private IDialogueService _dialogueService;
         private IWindowService _windowService;
+        private ICoroutineRunner _coroutineRunner;
+
+        private Coroutine _coroutineTyping;
         private Data.Dialogue.Dialogue _dialogues;
         private DialogueUI _dialogueUI;
-        private static BasicDialogOptions _basicDialogOptions;
-        private ICoroutineRunner _coroutineRunner;
 
         private int _currentDialogueId;
         private string _currentSoundEffect;
-
 
         public async void StartDialog(DialogueUI dialogueUI, DialogueID dialogueID)
         {
@@ -65,6 +67,7 @@ namespace Infrastructure.Managers.Dialogue
 
             confirmationUI.Buttons.OnYesButtonClicked = () =>
             {
+                _coroutineRunner.StopCoroutine(_coroutineTyping);
                 _windowService.Close(WindowID.Confirmation);
                 OnExitInMainMenu?.Invoke();
             };
@@ -94,7 +97,7 @@ namespace Infrastructure.Managers.Dialogue
             _dialogueUI.SetAvatar(_dialogueService.GetCharacter(phrase.CharacterType).Avatar);
             _dialogueUI.SetText(string.Empty);
 
-            _coroutineRunner.StartCoroutine(DisplayTyping(phrase.TextLocalization[0].Text));
+            _coroutineTyping = _coroutineRunner.StartCoroutine(DisplayTyping(phrase.TextLocalization[0].Text));
         }
 
         private IEnumerator DisplayTyping(string text)
