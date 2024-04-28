@@ -6,8 +6,13 @@ using Infrastructure.Services.GameData.Progress;
 using Infrastructure.Services.GameData.SaveLoad;
 using Infrastructure.Services.WindowsService;
 using UI.MainMenuScreen;
-using UnityEditor;
 using UnityEngine.AddressableAssets;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#else
+using UnityEngine;
+#endif
 
 namespace Infrastructure.ProjectStateMachine.States
 {

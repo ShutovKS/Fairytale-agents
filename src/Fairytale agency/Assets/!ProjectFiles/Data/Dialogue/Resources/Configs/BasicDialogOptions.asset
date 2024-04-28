@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c65295058e2941c086eb8366f4c09db2, type: 3}
   m_Name: BasicDialogOptions
   m_EditorClassIdentifier: 
-  secondsDelayDefault: 0.04
+  secondsDelayDefault: 0.0425
   delayAfterDialogueEnds: 1.5
