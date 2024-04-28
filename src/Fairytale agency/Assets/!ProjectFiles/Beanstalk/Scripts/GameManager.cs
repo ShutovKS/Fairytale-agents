@@ -9,8 +9,8 @@ namespace Beanstalk
     {
         public static GameManager Instance { get; private set; }
 
-        public Action OnLost;
-        public Action OnWon;
+        public event Action OnLost;
+        public event Action OnWon;
         public CameraFollow cameraScript;
         public GameObject boxPrefab;
 
