@@ -25,11 +25,11 @@ namespace Infrastructure.ProjectStateMachine
             StateMachine = new StateMachine<GameBootstrap>(new BootstrapState(this),
                 new InitializationState(this, progressService, saveLoadService, assetsAddressablesProvider),
                 new ResourcesLoadingState(this, windowService),
-                new GameMainMenuState(this, windowService, progressService, saveLoadService),
+                new GameMainMenuState(this, windowService, progressService, saveLoadService, soundService),
                 new LoadingGameplayState(this),
                 new PrologueState(this, windowService, soundService, saveLoadService, progressService),
-                new MumuState(this, saveLoadService, progressService, windowService),
-                new BeanstalkState(this, saveLoadService, progressService, windowService, inputActionReader),
+                new MumuState(this, saveLoadService, progressService, windowService, soundService),
+                new BeanstalkState(this, saveLoadService, soundService, progressService, windowService, inputActionReader),
                 new FinalState(this, windowService, progressService, saveLoadService)
             );
 

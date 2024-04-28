@@ -4,21 +4,24 @@ using Infrastructure.Managers.Dialogue;
 using Infrastructure.ProjectStateMachine.Base;
 using Infrastructure.Services.GameData.Progress;
 using Infrastructure.Services.GameData.SaveLoad;
+using Infrastructure.Services.SoundsService;
 using Infrastructure.Services.WindowsService;
 using Mumu;
 using UI.DialogueScreen;
 using UI.Mumu.Scrips;
+using UnityEngine;
 
 namespace Infrastructure.ProjectStateMachine.States
 {
     public class MumuState : IState<GameBootstrap>, IEnterable, IExitable
     {
         public MumuState(GameBootstrap initializer, ISaveLoadService saveLoadService, IProgressService progressService,
-            IWindowService windowService)
+            IWindowService windowService, ISoundService soundService)
         {
             _saveLoadService = saveLoadService;
             _progressService = progressService;
             _windowService = windowService;
+            _soundService = soundService;
             Initializer = initializer;
         }
 
@@ -26,6 +29,7 @@ namespace Infrastructure.ProjectStateMachine.States
         private readonly ISaveLoadService _saveLoadService;
         private readonly IProgressService _progressService;
         private readonly IWindowService _windowService;
+        private readonly ISoundService _soundService;
 
         private static DialogueManager DialogueManager => DialogueManager.Instance;
         private static GameManager GameManager => GameManager.Instance;
@@ -37,6 +41,9 @@ namespace Infrastructure.ProjectStateMachine.States
 
             LaunchDialogAtStart();
 
+            var audioClip = Resources.Load<AudioClip>("Sounds/mumu-sound");
+            _soundService.PlaySoundsClip(audioClip);
+            
             _windowService.Close(WindowID.Loading);
         }
 

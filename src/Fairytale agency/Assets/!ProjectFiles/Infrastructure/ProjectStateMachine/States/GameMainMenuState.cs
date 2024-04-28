@@ -4,12 +4,15 @@ using Infrastructure.Services.AssetsAddressables;
 using Infrastructure.Services.GameData;
 using Infrastructure.Services.GameData.Progress;
 using Infrastructure.Services.GameData.SaveLoad;
+using Infrastructure.Services.SoundsService;
 using Infrastructure.Services.WindowsService;
 using UI.MainMenuScreen;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 #if UNITY_EDITOR
 using UnityEditor;
+
 #else
 using UnityEngine;
 #endif
@@ -19,11 +22,12 @@ namespace Infrastructure.ProjectStateMachine.States
     public class GameMainMenuState : IState<GameBootstrap>, IEnterable, IExitable
     {
         public GameMainMenuState(GameBootstrap initializer, IWindowService windowService,
-            IProgressService progressService, ISaveLoadService saveLoadService)
+            IProgressService progressService, ISaveLoadService saveLoadService, ISoundService soundService)
         {
             _windowService = windowService;
             _progressService = progressService;
             _saveLoadService = saveLoadService;
+            _soundService = soundService;
             Initializer = initializer;
         }
 
@@ -31,6 +35,7 @@ namespace Infrastructure.ProjectStateMachine.States
         private readonly IWindowService _windowService;
         private readonly IProgressService _progressService;
         private readonly ISaveLoadService _saveLoadService;
+        private readonly ISoundService _soundService;
 
         public void OnEnter()
         {
@@ -49,6 +54,10 @@ namespace Infrastructure.ProjectStateMachine.States
             mainMenuScreen.OnLoadGameButtonClicked += OnLoadGameButtonClicked;
             mainMenuScreen.OnExitButtonClicked += OnExitButtonClicked;
 
+            var audioClip = Resources.Load<AudioClip>("Sounds/menu-sound");
+            Debug.Log(audioClip == null);
+            _soundService.PlaySoundsClip(audioClip);
+            
             CloseLoadingWindow();
         }
 

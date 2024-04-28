@@ -9,6 +9,7 @@ using Infrastructure.ProjectStateMachine.Base;
 using Infrastructure.Services.GameData.Progress;
 using Infrastructure.Services.GameData.SaveLoad;
 using Infrastructure.Services.Input;
+using Infrastructure.Services.SoundsService;
 using Infrastructure.Services.WindowsService;
 using UI.BeanstalkScreen;
 using UI.Confirmation;
@@ -20,10 +21,11 @@ namespace Infrastructure.ProjectStateMachine.States
 {
     public class BeanstalkState : IState<GameBootstrap>, IEnterable, IExitable
     {
-        public BeanstalkState(GameBootstrap initializer, ISaveLoadService saveLoadService,
+        public BeanstalkState(GameBootstrap initializer, ISaveLoadService saveLoadService, ISoundService soundService,
             IProgressService progressService, IWindowService windowService, PlayerInputActionReader inputActionReader)
         {
             _saveLoadService = saveLoadService;
+            _soundService = soundService;
             _progressService = progressService;
             _windowService = windowService;
             _inputActionReader = inputActionReader;
@@ -32,6 +34,7 @@ namespace Infrastructure.ProjectStateMachine.States
 
         public GameBootstrap Initializer { get; }
         private readonly ISaveLoadService _saveLoadService;
+        private readonly ISoundService _soundService;
         private readonly IProgressService _progressService;
         private readonly IWindowService _windowService;
         private readonly PlayerInputActionReader _inputActionReader;
@@ -45,6 +48,9 @@ namespace Infrastructure.ProjectStateMachine.States
             _saveLoadService.SaveProgress();
 
             LaunchDialogAtStart();
+            
+            var audioClip = Resources.Load<AudioClip>("Sounds/beanstalk-sound");
+            _soundService.PlaySoundsClip(audioClip);
 
             _windowService.Close(WindowID.Loading);
         }
