@@ -39,28 +39,29 @@ namespace Infrastructure.Services.WindowsService
                 case WindowID.None:
                     break;
                 case WindowID.Loading:
-                    await _uiFactory.CreateScreen(AssetsAddressableConstants.LOADING_SCREEN, WindowID.Loading);
+                    await _uiFactory.CreateScreen(AssetsAddressableConstants.LOADING_SCREEN, windowID);
                     break;
                 case WindowID.MainMenu:
-                    await _uiFactory.CreateScreen(AssetsAddressableConstants.MAIN_MENU_SCREEN, WindowID.MainMenu);
+                    await _uiFactory.CreateScreen(AssetsAddressableConstants.MAIN_MENU_SCREEN, windowID);
                     break;
                 case WindowID.Dialogue:
-                    await _uiFactory.CreateScreen(AssetsAddressableConstants.DIALOGUE_SCREEN, WindowID.Dialogue);
+                    await _uiFactory.CreateScreen(AssetsAddressableConstants.DIALOGUE_SCREEN, windowID);
                     break;
                 case WindowID.Confirmation:
-                    await _uiFactory.CreateScreen(AssetsAddressableConstants.CONFIRMATION_SCREEN,
-                        WindowID.Confirmation);
+                    await _uiFactory.CreateScreen(AssetsAddressableConstants.CONFIRMATION_SCREEN, windowID);
                     break;
                 case WindowID.Mumu:
-                    await _uiFactory.CreateScreen(AssetsAddressableConstants.MUMU_SCREEN, WindowID.Mumu);
+                    await _uiFactory.CreateScreen(AssetsAddressableConstants.MUMU_SCREEN, windowID);
                     break;
                 case WindowID.Beanstalk:
-                    await _uiFactory.CreateScreen(AssetsAddressableConstants.BEANSTALK_SCREEN, WindowID.Beanstalk);
+                    await _uiFactory.CreateScreen(AssetsAddressableConstants.BEANSTALK_SCREEN, windowID);
+                    break;
+                case WindowID.Final:
+                    await _uiFactory.CreateScreen(AssetsAddressableConstants.FINAL_SCREEN, windowID);
                     break;
                 default: throw new ArgumentOutOfRangeException(nameof(windowID), windowID, null);
             }
         }
-
 
         public void Close(WindowID windowID)
         {
