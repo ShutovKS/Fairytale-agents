@@ -27,10 +27,9 @@ namespace Infrastructure.ProjectStateMachine
                 new ResourcesLoadingState(this, windowService),
                 new GameMainMenuState(this, windowService, progressService, saveLoadService),
                 new LoadingGameplayState(this),
-                new PrologueState(this, windowService, soundService, coroutineRunner, dialogueService, saveLoadService,
-                    progressService),
-                new MumuState(this, saveLoadService, progressService, windowService, inputActionReader, dialogueService, coroutineRunner),
-                new BeanstalkState(this, saveLoadService, progressService, windowService, inputActionReader, dialogueService, coroutineRunner)
+                new PrologueState(this, windowService, soundService, saveLoadService, progressService),
+                new MumuState(this, saveLoadService, progressService, windowService),
+                new BeanstalkState(this, saveLoadService, progressService, windowService, inputActionReader)
             );
 
             StateMachine.SwitchState<BootstrapState>();
