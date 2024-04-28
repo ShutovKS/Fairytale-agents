@@ -8,5 +8,8 @@ namespace Data.Dialogue
 
         MumuStart = 21,
         MumuFinal = 22,
+        
+        BeanstalkStart = 31,
+        BeanstalkFinal = 32,
     }
 }

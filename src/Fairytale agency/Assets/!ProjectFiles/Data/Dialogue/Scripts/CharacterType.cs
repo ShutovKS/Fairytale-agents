@@ -8,5 +8,6 @@ namespace Data.Dialogue
         Colleague = 6,
         
         MumuGerasimov = 21,
+        BeanstalkJack = 31,
     }
 }

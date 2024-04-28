@@ -1,21 +1,15 @@
 using System;
-using System.Collections;
-using System.Threading.Tasks;
-using Data.Dialogue;
-using Infrastructure.Services.WindowsService;
-using UI.Confirmation;
-using UI.DialogueScreen;
 using UI.Mumu.Scrips;
 using UnityEngine;
-using Event = UnityEngine.Event;
 
 namespace Mumu
 {
     public class GameManager : MonoBehaviour
     {
+        public static GameManager Instance { get; private set; }
+
         public event Action OnLost;
         public event Action OnWon;
-        public static GameManager Instance { get; private set; }
 
         [SerializeField] private EnemiesSpawner enemiesSpawner;
         [SerializeField] private Boat boat;

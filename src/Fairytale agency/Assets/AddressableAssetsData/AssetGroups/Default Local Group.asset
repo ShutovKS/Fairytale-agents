@@ -45,13 +45,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6533f70fdb639304dab390272ff464ec
-    m_Address: Empty2DScene
+  - m_GUID: 66026268ea3e6744cbf6accf080610e3
+    m_Address: MumuScreen
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 66026268ea3e6744cbf6accf080610e3
-    m_Address: MumuScreen
+  - m_GUID: 931c8063c563bc448a1e5e2c973dbd4d
+    m_Address: BeanstalkScene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f70439d5882ec0409b1354ac8eff1fa
+    m_Address: BeanstalkScreen
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

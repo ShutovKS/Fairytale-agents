@@ -7,8 +7,10 @@
         public const string MAIN_MENU_SCREEN = "MainMenuScreen";
         public const string CONFIRMATION_SCREEN = "ConfirmationScreen";
         public const string MUMU_SCREEN = "MumuScreen";
+        public const string BEANSTALK_SCREEN = "BeanstalkScreen";
 
         public const string EMPTY_2D_SCENE = "Empty2DScene";
         public const string MUMU_SCENE = "MumuScene";
+        public const string BEANSTALK_SCENE = "BeanstalkScene";
     }
 }

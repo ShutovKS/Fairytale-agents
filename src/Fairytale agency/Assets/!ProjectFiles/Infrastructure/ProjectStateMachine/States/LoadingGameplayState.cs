@@ -31,6 +31,10 @@ namespace Infrastructure.ProjectStateMachine.States
                     asyncOperation = Addressables.LoadSceneAsync(AssetsAddressableConstants.MUMU_SCENE);
                     asyncOperation.Completed += _ => Initializer.StateMachine.SwitchState<MumuState>();
                     break;
+                case GameStageType.Beanstalk:
+                    asyncOperation = Addressables.LoadSceneAsync(AssetsAddressableConstants.BEANSTALK_SCENE);
+                    asyncOperation.Completed += _ => Initializer.StateMachine.SwitchState<BeanstalkState>();
+                    break;
                 default: throw new ArgumentOutOfRangeException();
             }
         }
