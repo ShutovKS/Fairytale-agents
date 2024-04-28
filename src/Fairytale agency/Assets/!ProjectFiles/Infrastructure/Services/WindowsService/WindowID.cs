@@ -9,5 +9,6 @@
         Dialogue = 3,
         Confirmation = 4,
         Mumu = 5,
+        Beanstalk = 6,
     }
 }

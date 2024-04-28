@@ -23,8 +23,6 @@ namespace Infrastructure.Services.GameData.SaveLoad
 
         public void SaveProgress()
         {
-            Debug.Log("Save progress");
-
             var jsonData = _progressService.PlayerProgress.ToJson();
 
             Debug.Log(jsonData);
@@ -40,8 +38,6 @@ namespace Infrastructure.Services.GameData.SaveLoad
             {
                 return null;
             }
-            
-            Debug.Log("Load progress");
             
             var encryptedData = File.ReadAllText(_saveFilePath);
             

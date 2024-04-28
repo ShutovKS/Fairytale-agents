@@ -52,10 +52,11 @@ namespace Infrastructure.Services.WindowsService
                         WindowID.Confirmation);
                     break;
                 case WindowID.Mumu:
-                    await _uiFactory.CreateScreen(AssetsAddressableConstants.MUMU_SCREEN,
-                        WindowID.Mumu);
+                    await _uiFactory.CreateScreen(AssetsAddressableConstants.MUMU_SCREEN, WindowID.Mumu);
                     break;
-
+                case WindowID.Beanstalk:
+                    await _uiFactory.CreateScreen(AssetsAddressableConstants.BEANSTALK_SCREEN, WindowID.Beanstalk);
+                    break;
                 default: throw new ArgumentOutOfRangeException(nameof(windowID), windowID, null);
             }
         }

@@ -619,6 +619,8 @@ MonoBehaviour:
   cameraScript: {fileID: 519420033}
   boxPrefab: {fileID: 4204337053618074196, guid: 74b67ccab2f0c6b44ba30ebde27701c7, type: 3}
   inputActionReader: {fileID: 11400000, guid: 52afdfec6aa47be41aff2c2a3d7c9ded, type: 2}
+  <CountBox>k__BackingField: 5
+  <NumberRemainingBox>k__BackingField: 0
 --- !u!4 &1319531848
 Transform:
   m_ObjectHideFlags: 0

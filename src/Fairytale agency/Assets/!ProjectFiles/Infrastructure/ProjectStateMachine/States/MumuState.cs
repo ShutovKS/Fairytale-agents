@@ -89,7 +89,7 @@ namespace Infrastructure.ProjectStateMachine.States
         private void Won()
         {
             LaunchDialogAtEnd();
-            _onDialogComplete += () => Initializer.StateMachine.SwitchState<GameMainMenuState>();
+            _onDialogComplete += () => Initializer.StateMachine.SwitchState<BeanstalkState>();
         }
 
         private async void StartGameplay()
