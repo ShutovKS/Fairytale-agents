@@ -3,6 +3,7 @@ using Infrastructure.ProjectStateMachine.Base;
 using Infrastructure.Services.GameData.Progress;
 using Infrastructure.Services.GameData.SaveLoad;
 using Infrastructure.Services.WindowsService;
+using UI.FinalScreen.Scripts;
 
 namespace Infrastructure.ProjectStateMachine.States
 {

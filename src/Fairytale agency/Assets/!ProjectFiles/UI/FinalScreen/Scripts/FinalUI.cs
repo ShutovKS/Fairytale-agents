@@ -2,14 +2,17 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FinalUI : MonoBehaviour
+namespace UI.FinalScreen.Scripts
 {
-    public event Action OnExitButtonClicked;
-
-    [SerializeField] private Button exitButton;
-
-    private void Awake()
+    public class FinalUI : MonoBehaviour
     {
-        exitButton.onClick.AddListener(() => OnExitButtonClicked?.Invoke());
+        public event Action OnExitButtonClicked;
+
+        [SerializeField] private Button exitButton;
+
+        private void Awake()
+        {
+            exitButton.onClick.AddListener(() => OnExitButtonClicked?.Invoke());
+        }
     }
 }
