@@ -57,7 +57,7 @@ namespace Infrastructure.ProjectStateMachine.States
 
         private void OnLoadGameButtonClicked()
         {
-            Initializer.StateMachine.SwitchState<LoadingGameplayState, GameStageType>(GameStageType.Beanstalk);
+            Initializer.StateMachine.SwitchState<LoadingGameplayState, GameStageType>(GameStageType.Mumu);
         }
 
         private static void OnExitButtonClicked()

@@ -44,11 +44,14 @@ namespace Beanstalk
         {
             if (_boxScript != null)
             {
+                _beanstalkUI.SetLeft(--CountBox);
+                _beanstalkUI.SetBuilt(++NumberRemainingBox);
+
                 _boxScript.OnLanded -= MoveCamera;
                 _boxScript.OnLanded -= SpawnBox;
             }
             
-            if (CountBox == 0)
+            if (CountBox <= 0)
             {
                 OnWon?.Invoke();
                 return;
@@ -56,10 +59,7 @@ namespace Beanstalk
 
             _boxScript = Instantiate(boxPrefab, new Vector3(0f, cameraScript.targetPos.y, 0f), Quaternion.identity)
                 .GetComponent<BoxScript>();
-
-            _beanstalkUI.SetLeft(--CountBox);
-            _beanstalkUI.SetBuilt(++NumberRemainingBox);
-
+            
             _boxScript.OnLanded += MoveCamera;
             _boxScript.OnLanded += SpawnBox;
             _boxScript.OnGameOver += GameOver;
