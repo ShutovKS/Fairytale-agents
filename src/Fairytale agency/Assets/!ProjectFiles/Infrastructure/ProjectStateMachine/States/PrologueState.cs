@@ -59,6 +59,9 @@ namespace Infrastructure.ProjectStateMachine.States
 
         public void OnExit()
         {
+            DialogueManager.OnExitInMainMenu -= ExitInMainMenu;
+            DialogueManager.OnDialogComplete -= NextLevel;
+            
             _windowService.Close(WindowID.Dialogue);
             _windowService.Open(WindowID.Loading);
         }

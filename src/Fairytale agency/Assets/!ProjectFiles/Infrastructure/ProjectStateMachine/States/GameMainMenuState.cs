@@ -42,6 +42,11 @@ namespace Infrastructure.ProjectStateMachine.States
             var asyncOperation = Addressables.LoadSceneAsync(AssetsAddressableConstants.EMPTY_2D_SCENE);
             asyncOperation.Completed += _ => OpenMainMenuWindow();
         }
+        
+        public void OnExit()
+        {
+            CloseMainMenuWindow();
+        }
 
         private async void OpenMainMenuWindow()
         {
@@ -55,7 +60,6 @@ namespace Infrastructure.ProjectStateMachine.States
             mainMenuScreen.OnExitButtonClicked += OnExitButtonClicked;
 
             var audioClip = Resources.Load<AudioClip>("Sounds/menu-sound");
-            Debug.Log(audioClip == null);
             _soundService.PlaySoundsClip(audioClip);
             
             CloseLoadingWindow();
@@ -93,11 +97,6 @@ namespace Infrastructure.ProjectStateMachine.States
         {
             _windowService.Close(WindowID.MainMenu);
             _windowService.Open(WindowID.Loading);
-        }
-
-        public void OnExit()
-        {
-            CloseMainMenuWindow();
         }
     }
 }

@@ -99,7 +99,7 @@ namespace Infrastructure.ProjectStateMachine.States
         private async void LaunchDialogAtEnd()
         {
             var dialogueUI = await _windowService.OpenAndGetComponent<DialogueUI>(WindowID.Dialogue);
-            DialogueManager.StartDialog(dialogueUI, DialogueID.BeanstalkStart);
+            DialogueManager.StartDialog(dialogueUI, DialogueID.BeanstalkFinal);
             DialogueManager.OnExitInMainMenu += ExitInMainMenu;
             DialogueManager.OnDialogComplete += NextLevel;
             return;
