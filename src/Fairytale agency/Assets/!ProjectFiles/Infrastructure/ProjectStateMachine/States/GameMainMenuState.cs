@@ -42,7 +42,7 @@ namespace Infrastructure.ProjectStateMachine.States
             var asyncOperation = Addressables.LoadSceneAsync(AssetsAddressableConstants.EMPTY_2D_SCENE);
             asyncOperation.Completed += _ => OpenMainMenuWindow();
         }
-        
+
         public void OnExit()
         {
             CloseMainMenuWindow();
@@ -55,34 +55,37 @@ namespace Infrastructure.ProjectStateMachine.States
             mainMenuScreen.SetLoadGameButtonIsInteractable(_progressService.PlayerProgress.gameStageType !=
                                                            GameStageType.None);
 
-            mainMenuScreen.OnStartNewGameButtonClicked += OnStartNewGameButtonClicked;
-            mainMenuScreen.OnLoadGameButtonClicked += OnLoadGameButtonClicked;
-            mainMenuScreen.OnExitButtonClicked += OnExitButtonClicked;
+            mainMenuScreen.OnStartNewGameButtonClicked += StartNewGame;
+            mainMenuScreen.OnLoadGameButtonClicked += LoadGame;
+            mainMenuScreen.OnExitButtonClicked += Quit;
 
             var audioClip = Resources.Load<AudioClip>("Sounds/menu-sound");
             _soundService.PlaySoundsClip(audioClip);
-            
+
             CloseLoadingWindow();
         }
 
-        private void OnStartNewGameButtonClicked()
+        private void StartNewGame()
         {
             _progressService.SetProgress(new PlayerProgress());
             _saveLoadService.SaveProgress();
 
-            OnLoadGameButtonClicked();
+            LoadGame();
         }
 
-        private void OnLoadGameButtonClicked()
+        private void LoadGame()
         {
             var stageType = _progressService.PlayerProgress.gameStageType;
             Initializer.StateMachine.SwitchState<LoadingGameplayState, GameStageType>(stageType);
         }
 
-        private static void OnExitButtonClicked()
+        private static void Quit()
         {
 #if UNITY_EDITOR
             EditorApplication.isPlaying = false;
+#elif UNITY_WEBGL
+            const string WEBPLAYER_QUIT_URL = "https://github.com/ShutovKS";
+            Application.OpenURL(WEBPLAYER_QUIT_URL);
 #else
             Application.Quit();
 #endif
