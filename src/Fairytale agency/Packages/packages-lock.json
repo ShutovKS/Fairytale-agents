@@ -30,7 +30,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.aseprite": {
-      "version": "1.1.2",
+      "version": "1.1.3",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -62,7 +62,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.psdimporter": {
-      "version": "9.0.2",
+      "version": "9.0.3",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -78,7 +78,7 @@
       "dependencies": {}
     },
     "com.unity.2d.spriteshape": {
-      "version": "10.0.3",
+      "version": "10.0.4",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -176,12 +176,12 @@
       "dependencies": {
         "com.unity.2d.animation": "10.1.1",
         "com.unity.2d.pixel-perfect": "5.0.3",
-        "com.unity.2d.psdimporter": "9.0.2",
+        "com.unity.2d.psdimporter": "9.0.3",
         "com.unity.2d.sprite": "1.0.0",
-        "com.unity.2d.spriteshape": "10.0.3",
+        "com.unity.2d.spriteshape": "10.0.4",
         "com.unity.2d.tilemap": "1.0.0",
         "com.unity.2d.tilemap.extras": "4.0.2",
-        "com.unity.2d.aseprite": "1.1.2"
+        "com.unity.2d.aseprite": "1.1.3"
       }
     },
     "com.unity.ide.rider": {
@@ -212,7 +212,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.localization": {
-      "version": "1.5.0-pre.5",
+      "version": "1.5.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -299,7 +299,7 @@
       }
     },
     "com.unity.visualscripting": {
-      "version": "1.9.2",
+      "version": "1.9.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {
